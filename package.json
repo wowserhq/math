@@ -1,0 +1,22 @@
+{
+  "name": "wowser-math",
+  "version": "0.0.1",
+  "description": "Math library for Wowser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wowserhq/wowser-math.git"
+  },
+  "keywords": [
+    "wowser"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wowserhq/wowser-math/issues"
+  },
+  "homepage": "https://github.com/wowserhq/wowser-math#readme"
+}
