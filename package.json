@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/wowserhq/wowser-math/issues"
   },
-  "homepage": "https://github.com/wowserhq/wowser-math#readme"
+  "homepage": "https://github.com/wowserhq/wowser-math#readme",
+  "devDependencies": {
+    "webpack": "^3.5.5"
+  }
 }
