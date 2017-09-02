@@ -1,0 +1,13 @@
+{
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": [
+          "last 2 versions",
+          "edge >= 15",
+          "not ie 6-11"
+        ]
+      }
+    }]
+  ]
+}
