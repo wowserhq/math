@@ -2,10 +2,15 @@
   "name": "wowser-math",
   "version": "0.0.1",
   "description": "Math library for Wowser",
-  "main": "index.js",
+  "main": "dist/wowser-math.js",
   "scripts": {
+    "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "files": [
+    "README.md",
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wowserhq/wowser-math.git"
