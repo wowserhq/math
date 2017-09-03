@@ -5,7 +5,9 @@
   "main": "dist/wowser-math.js",
   "scripts": {
     "build": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "npm run build",
+    "compat": "browserslist --coverage \"last 2 versions, not ie 1-11, not android 1-56\""
   },
   "files": [
     "README.md",
