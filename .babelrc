@@ -2,10 +2,11 @@
   "presets": [
     ["env", {
       "targets": {
+        "node": "6.11",
         "browsers": [
           "last 2 versions",
-          "edge >= 15",
-          "not ie 6-11"
+          "not ie 1-11",
+          "not android 1-56"
         ]
       }
     }]
