@@ -5,8 +5,8 @@
   "main": "dist/wowser-math.js",
   "scripts": {
     "lint": "eslint --ignore-path .gitignore .",
-    "build": "webpack",
-    "test": "jest",
+    "build": "npm run test && webpack",
+    "test": "npm run lint && jest",
     "prepublish": "npm run build",
     "compat": "browserslist --coverage \"last 2 versions, not ie 1-11, not android 1-56\""
   },
