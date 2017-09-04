@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
 
-  entry: './src/index.js',
+  entry: './src/lib/index.js',
 
   output: {
     filename: 'wowser-math.js',
@@ -16,6 +16,5 @@ module.exports = {
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' }
     ]
   }
-
 
 };
