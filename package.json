@@ -7,6 +7,7 @@
     "lint": "eslint --ignore-path .gitignore .",
     "build": "npm run test && webpack",
     "test": "npm run lint && jest",
+    "precommit": "npm run lint",
     "prepublish": "npm run build",
     "compat": "browserslist --coverage \"last 2 versions, not ie 1-11, not android 1-56\""
   },
