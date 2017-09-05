@@ -2,30 +2,50 @@ import { Plane } from '../lib';
 
 describe('Plane', () => {
 
-  test('new plane should contain default values', () => {
+  describe('#copy', () => {
 
-    const plane = Plane.create();
+    test('returns new plane matching original', () => {
 
-    expect(plane).toEqual(Plane.DEFAULT);
+      const src = Plane.fromValues(-4, 16, 4, -8);
+      const dst = Plane.create();
+
+      Plane.copy(dst, src);
+
+      expect(dst).toEqual(src);
+
+    });
 
   });
 
-  test('fromValues should create new plane matching given values', () => {
+  describe('#create', () => {
 
-    const plane = Plane.fromValues(-4, 16, 4, -8);
+    test('returns new plane with expected type', () => {
 
-    expect(plane).toEqual(new Float32Array([-4, 16, 4, -8]));
+      const plane = Plane.create();
+
+      expect(plane).toBeInstanceOf(Float32Array);
+
+    });
+
+    test('returns new plane with default values', () => {
+
+      const plane = Plane.create();
+
+      expect(plane).toEqual(Plane.DEFAULT);
+
+    });
 
   });
 
-  test('copied plane should match original', () => {
+  describe('#fromValues', () => {
 
-    const src = Plane.fromValues(-4, 16, 4, -8);
-    const dst = Plane.create();
+    test('returns new plane matching given values', () => {
 
-    Plane.copy(dst, src);
+      const plane = Plane.fromValues(-4, 16, 4, -8);
 
-    expect(dst).toEqual(src);
+      expect(plane).toEqual(new Float32Array([-4, 16, 4, -8]));
+
+    });
 
   });
 
