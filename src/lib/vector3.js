@@ -48,7 +48,9 @@ class Vector3 extends Float32Array {
   constructor(arr = DEFAULT) {
 
     if (arr && arr.length > 3) {
+
       throw new Error('Invalid length');
+
     }
 
     super(arr);
