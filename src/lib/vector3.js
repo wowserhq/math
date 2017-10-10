@@ -1,79 +1,126 @@
 /**
+ * Axis constants
+ *
+ * @readonly
+ *
+ * @memberof Vector3
+ *
+ * @enum {Number}
+ */
+const AXIS = {
+  /** X axis */
+  X: 0,
+
+  /** Y axis */
+  Y: 1,
+
+  /** Z axis */
+  Z: 2
+};
+
+Object.freeze(AXIS);
+
+/**
+ * Default values
+ *
+ * @readonly
+ *
+ * @memberof Vector3
+ *
+ * @type {Array}
+ */
+const DEFAULT = [0.0, 0.0, 0.0];
+
+Object.freeze(DEFAULT);
+
+/**
  * Vector3
  *
- * @module Vector3
+ * @extends Float32Array
  */
+class Vector3 extends Float32Array {
 
-/**
- * Default values for new vectors.
- */
-export const DEFAULT = new Float32Array([0, 0, 0]);
+  /**
+   * Create a new vector.
+   *
+   * @param {Array} arr Initial values
+   */
+  constructor(arr = DEFAULT) {
 
-/**
- * Axis constants
- */
-export const AXIS_X = 0;
-export const AXIS_Y = 1;
-export const AXIS_Z = 2;
+    if (arr && arr.length > 3) {
+      throw new Error('Invalid length');
+    }
 
-/**
- * Create new vector.
- *
- * @returns {Vector3} The new vector
- */
-export function create() {
+    super(arr);
 
-  return new Float32Array(DEFAULT);
+  }
 
-}
+  /**
+   * Check for exact equality against the given vector.
+   *
+   * @param {Vector3} v Vector to compare
+   *
+   * @returns {Boolean} Equality
+   */
+  equals(v) {
 
-/**
- * Create new vector from given values.
- *
- * @param {Number} x The x term
- * @param {Number} y The y term
- * @param {Number} z The z term
- *
- * @returns {Vector3} The new vector
- */
-export function fromValues(x, y, z) {
+    return this[0] === v[0] && this[1] === v[1] && this[2] === v[2];
 
-  const vector = create();
+  }
 
-  vector[0] = x;
-  vector[1] = y;
-  vector[2] = z;
+  /**
+   * Return the axis with the largest absolute value for the given vector. In cases of
+   * equality, the returned axis is biased toward the right of X, Y, and Z.
+   *
+   * @returns {Number} Axis with the largest value
+   */
+  majorAxis() {
 
-  return vector;
+    const ax = Math.abs(this[0]);
+    const ay = Math.abs(this[1]);
+    const az = Math.abs(this[2]);
 
-}
+    if (az >= ax && az >= ay) {
 
-/**
- * Return the axis with the largest absolute value for the given vector. In cases of
- * equality, the returned axis is biased toward the right of X, Y, and Z.
- *
- * @param {Vector3} vector The vector
- *
- * @returns {Number} Axis with the largest value
- */
-export function majorAxis(vector) {
+      return AXIS.Z;
 
-  const ax = Math.abs(vector[0]);
-  const ay = Math.abs(vector[1]);
-  const az = Math.abs(vector[2]);
+    } else if (ay >= ax) {
 
-  if (az >= ax && az >= ay) {
+      return AXIS.Y;
 
-    return AXIS_Z;
+    } else {
 
-  } else if (ay >= ax) {
+      return AXIS.X;
 
-    return AXIS_Y;
-
-  } else {
-
-    return AXIS_X;
+    }
 
   }
 
 }
+
+/**
+ * Creates a new vector with a variable number of arguments.
+ *
+ * @param {...*} args Arguments for new vector
+ *
+ * @returns {Vector3} New vector
+ */
+Vector3.of = function(...args) {
+
+  if (args.length === 0) {
+
+    return new Vector3();
+
+  } else {
+
+    return new Vector3(args);
+
+  }
+
+};
+
+Vector3.AXIS = AXIS;
+
+Vector3.DEFAULT = DEFAULT;
+
+export default Vector3;

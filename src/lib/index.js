@@ -1,5 +1,5 @@
 import * as Plane from './plane';
-import * as Vector3 from './vector3';
+import Vector3 from './vector3';
 
 export {
   Plane,
