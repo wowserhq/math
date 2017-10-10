@@ -96,122 +96,122 @@ class Vector3 extends Float32Array {
 
   }
 
+  /**
+   * Execute the provided function once for each vector in the given array.
+   *
+   * @param {Float32Array} arr Array to traverse
+   * @param {Function} cb Callback
+   *
+   * @returns {void}
+   */
+  static forEach(arr, cb) {
+
+    if (arr.length % 3 !== 0) {
+
+      throw new Error('Invalid length');
+
+    }
+
+    const l = arr.length;
+
+    let i;
+
+    const v = new Vector3();
+
+    for (i = 0; i < l; i += 3) {
+
+      v[0] = arr[i];
+      v[1] = arr[i + 1];
+      v[2] = arr[i + 2];
+
+      cb.call(this, v, i / 3, arr);
+
+    }
+
+  }
+
+  /**
+   * Generate an iterator capable of iterating over an array as vector indices.
+   *
+   * @param {Float32Array | Array} arr Array to iterate
+   *
+   * @returns {Iterator} New iterator
+   */
+  static *keys(arr) {
+
+    if (arr.length % 3 !== 0) {
+
+      throw new Error('Invalid length');
+
+    }
+
+    const l = arr.length / 3;
+
+    let i;
+
+    for (i = 0; i < l; i++) {
+
+      yield i;
+
+    }
+
+  }
+
+  /**
+   * Create a new vector with a variable number of arguments.
+   *
+   * @param {...*} args Arguments for new vector
+   *
+   * @returns {Vector3} New vector
+   */
+  static of(...args) {
+
+    if (args.length === 0) {
+
+      return new Vector3();
+
+    } else {
+
+      return new Vector3(args);
+
+    }
+
+  }
+
+  /**
+   * Generate an iterator capable of iterating over an array as vectors.
+   *
+   * @param {Float32Array | Array} arr Array to iterate
+   *
+   * @returns {Iterator} New iterator
+   */
+  static *values(arr) {
+
+    if (arr.length % 3 !== 0) {
+
+      throw new Error('Invalid length');
+
+    }
+
+    const l = arr.length;
+
+    let i;
+
+    const v = new Vector3();
+
+    for (i = 0; i < l; i += 3) {
+
+      v[0] = arr[i];
+      v[1] = arr[i + 1];
+      v[2] = arr[i + 2];
+
+      yield v;
+
+    }
+
+  }
+
 }
-
-/**
- * Execute the provided function once for each vector in the given array.
- *
- * @param {Float32Array} arr Array to traverse
- * @param {Function} cb Callback
- *
- * @returns {void}
- */
-Vector3.forEach = function(arr, cb) {
-
-  if (arr.length % 3 !== 0) {
-
-    throw new Error('Invalid length');
-
-  }
-
-  const l = arr.length;
-
-  let i;
-
-  const v = new Vector3();
-
-  for (i = 0; i < l; i += 3) {
-
-    v[0] = arr[i];
-    v[1] = arr[i + 1];
-    v[2] = arr[i + 2];
-
-    cb.call(this, v, i / 3, arr);
-
-  }
-
-};
-
-/**
- * Generate an iterator capable of iterating over an array as vector indices.
- *
- * @param {Float32Array | Array} arr Array to iterate
- *
- * @returns {Iterator} New iterator
- */
-Vector3.keys = function*(arr) {
-
-  if (arr.length % 3 !== 0) {
-
-    throw new Error('Invalid length');
-
-  }
-
-  const l = arr.length / 3;
-
-  let i;
-
-  for (i = 0; i < l; i++) {
-
-    yield i;
-
-  }
-
-};
-
-/**
- * Create a new vector with a variable number of arguments.
- *
- * @param {...*} args Arguments for new vector
- *
- * @returns {Vector3} New vector
- */
-Vector3.of = function(...args) {
-
-  if (args.length === 0) {
-
-    return new Vector3();
-
-  } else {
-
-    return new Vector3(args);
-
-  }
-
-};
-
-/**
- * Generate an iterator capable of iterating over an array as vectors.
- *
- * @param {Float32Array | Array} arr Array to iterate
- *
- * @returns {Iterator} New iterator
- */
-Vector3.values = function*(arr) {
-
-  if (arr.length % 3 !== 0) {
-
-    throw new Error('Invalid length');
-
-  }
-
-  const l = arr.length;
-
-  let i;
-
-  const v = new Vector3();
-
-  for (i = 0; i < l; i += 3) {
-
-    v[0] = arr[i];
-    v[1] = arr[i + 1];
-    v[2] = arr[i + 2];
-
-    yield v;
-
-  }
-
-};
 
 Vector3.AXIS = AXIS;
 
