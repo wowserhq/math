@@ -2,7 +2,7 @@ import { Vector3 } from '../lib';
 
 describe('Vector3', () => {
 
-  describe('#constructor', () => {
+  describe('prototype.constructor()', () => {
 
     test('returns new vector with expected type', () => {
 
@@ -23,7 +23,7 @@ describe('Vector3', () => {
 
   });
 
-  describe('#majorAxis', () => {
+  describe('prototype.majorAxis()', () => {
 
     test('returns x axis when x is major', () => {
 
@@ -97,7 +97,7 @@ describe('Vector3', () => {
 
   });
 
-  describe('#forEach', () => {
+  describe('forEach()', () => {
 
     test('iterates over array', () => {
 
@@ -134,7 +134,7 @@ describe('Vector3', () => {
 
   });
 
-  describe('#keys', () => {
+  describe('keys()', () => {
 
     test('returns vector iterator', () => {
 
@@ -187,7 +187,7 @@ describe('Vector3', () => {
 
   });
 
-  describe('#of', () => {
+  describe('of()', () => {
 
     test('returns new vector matching given values', () => {
 
@@ -207,7 +207,7 @@ describe('Vector3', () => {
 
   });
 
-  describe('#values', () => {
+  describe('values()', () => {
 
     test('returns vector iterator', () => {
 
