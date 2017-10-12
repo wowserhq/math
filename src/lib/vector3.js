@@ -28,7 +28,7 @@ const DEFAULT = [0.0, 0.0, 0.0];
 Object.freeze(DEFAULT);
 
 /**
- * Vector3
+ * A 3-component vector.
  *
  * @extends Float32Array
  */
@@ -138,7 +138,7 @@ class Vector3 extends Float32Array {
   /**
    * Generate an iterator capable of iterating over an array as vectors.
    *
-   * @param {Float32Array | Array} arr Array to iterate
+   * @param {(Float32Array|Array)} arr Array to iterate
    *
    * @returns {Iterator} New iterator
    */
