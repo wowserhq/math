@@ -8,7 +8,7 @@
     "build": "npm run test && webpack",
     "test": "npm run lint && jest",
     "precommit": "npm run lint",
-    "prepublish": "npm run build",
+    "prepublishOnly": "npm run build",
     "doc": "jsdoc -c .jsdocrc -d doc",
     "compat": "browserslist --coverage \"last 2 versions, not ie 1-11, not android 1-56\""
   },
