@@ -47,6 +47,34 @@ class Vector3 extends Float32Array {
   }
 
   /**
+   * Add given vector v to this vector.
+   *
+   * @param {Vector3} v Vector to add
+   * @returns {Vector3} Self
+   */
+  add(v) {
+    this[0] += v[0];
+    this[1] += v[1];
+    this[2] += v[2];
+
+    return this;
+  }
+
+  /**
+   * Add given scalar s to this vector's components.
+   *
+   * @param {Number} s Scalar to add
+   * @returns {Vector3} Self
+   */
+  addScalar(s) {
+    this[0] += s;
+    this[1] += s;
+    this[2] += s;
+
+    return this;
+  }
+
+  /**
    * Check for exact equality against the given vector.
    *
    * @param {Vector3} v Vector to compare

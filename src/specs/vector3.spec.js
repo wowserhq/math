@@ -16,6 +16,38 @@ describe('Vector3', () => {
     });
   });
 
+  describe('prototype.add()', () => {
+    test('returns expected result when adding positive vector', () => {
+      const vector1 = Vector3.of(1.0, 2.0, 3.0);
+      const vector2 = Vector3.of(4.0, 5.0, 6.0);
+
+      expect(vector1.add(vector2).equals(Vector3.of(5.0, 7.0, 9.0))).toBe(true);
+    });
+
+    test('returns expected result when adding negative vector', () => {
+      const vector1 = Vector3.of(1.0, 2.0, 3.0);
+      const vector2 = Vector3.of(-2.0, -3.0, -4.0);
+
+      expect(vector1.add(vector2).equals(Vector3.of(-1.0, -1.0, -1.0))).toBe(true);
+    });
+  });
+
+  describe('prototype.addScalar()', () => {
+    test('returns expected result when adding positive scalar', () => {
+      const vector = Vector3.of(1.0, 2.0, 3.0);
+      const scalar = 4.0;
+
+      expect(vector.addScalar(scalar).equals(Vector3.of(5.0, 6.0, 7.0))).toBe(true);
+    });
+
+    test('returns expected result when adding negative scalar', () => {
+      const vector = Vector3.of(1.0, 2.0, 3.0);
+      const scalar = -3.0;
+
+      expect(vector.addScalar(scalar).equals(Vector3.of(-2.0, -1.0, 0.0))).toBe(true);
+    });
+  });
+
   describe('prototype.equals()', () => {
     test('returns true when vectors are exactly equal', () => {
       const vector1 = Vector3.of(1.0, 2.0, 3.0);
