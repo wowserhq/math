@@ -16,6 +16,29 @@ describe('Vector3', () => {
     });
   });
 
+  describe('prototype.equals()', () => {
+    test('returns true when vectors are exactly equal', () => {
+      const vector1 = Vector3.of(1.0, 2.0, 3.0);
+      const vector2 = Vector3.of(1.0, 2.0, 3.0);
+
+      expect(vector1.equals(vector2)).toBe(true);
+    });
+
+    test('returns false when vectors are nearly equal', () => {
+      const vector1 = Vector3.of(1.000001, 2.0, 3.0);
+      const vector2 = Vector3.of(1.000002, 2.0, 3.0);
+
+      expect(vector1.equals(vector2)).toBe(false);
+    });
+
+    test('returns false when vectors are not equal', () => {
+      const vector1 = Vector3.of(3.0, 4.0, 5.0);
+      const vector2 = Vector3.of(1.0, 2.0, 3.0);
+
+      expect(vector1.equals(vector2)).toBe(false);
+    });
+  });
+
   describe('prototype.majorAxis()', () => {
     test('returns x axis when x is major', () => {
       const vector = Vector3.of(3.0, 2.0, 1.0);
