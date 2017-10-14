@@ -105,6 +105,34 @@ class Vector3 extends Float32Array {
   }
 
   /**
+   * Subtract given vector v from this vector.
+   *
+   * @param {Vector3} v Vector to subtract
+   * @returns {Vector3} Self
+   */
+  sub(v) {
+    this[0] -= v[0];
+    this[1] -= v[1];
+    this[2] -= v[2];
+
+    return this;
+  }
+
+  /**
+   * Subtract given scalar s from this vector's components.
+   *
+   * @param {Number} s Scalar to subtract
+   * @returns {Vector3} Self
+   */
+  subScalar(s) {
+    this[0] -= s;
+    this[1] -= s;
+    this[2] -= s;
+
+    return this;
+  }
+
+  /**
    * Execute the provided function once for each vector in the given array.
    *
    * @param {Float32Array} arr Array to traverse

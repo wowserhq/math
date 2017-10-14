@@ -122,6 +122,38 @@ describe('Vector3', () => {
     });
   });
 
+  describe('prototype.sub()', () => {
+    test('returns expected result when subtracting positive vector', () => {
+      const vector1 = Vector3.of(7.0, 8.0, 9.0);
+      const vector2 = Vector3.of(1.0, 2.0, 3.0);
+
+      expect(vector1.sub(vector2).equals(Vector3.of(6.0, 6.0, 6.0))).toBe(true);
+    });
+
+    test('returns expected result when subtracting negative vector', () => {
+      const vector1 = Vector3.of(1.0, 2.0, 3.0);
+      const vector2 = Vector3.of(-2.0, -3.0, -4.0);
+
+      expect(vector1.sub(vector2).equals(Vector3.of(3.0, 5.0, 7.0))).toBe(true);
+    });
+  });
+
+  describe('prototype.subScalar()', () => {
+    test('returns expected result when subtracting positive scalar', () => {
+      const vector = Vector3.of(7.0, 8.0, 9.0);
+      const scalar = 4.0;
+
+      expect(vector.subScalar(scalar).equals(Vector3.of(3.0, 4.0, 5.0))).toBe(true);
+    });
+
+    test('returns expected result when subtracting negative scalar', () => {
+      const vector = Vector3.of(1.0, 2.0, 3.0);
+      const scalar = -3.0;
+
+      expect(vector.subScalar(scalar).equals(Vector3.of(4.0, 5.0, 6.0))).toBe(true);
+    });
+  });
+
   describe('forEach()', () => {
     test('iterates over array', () => {
       const arr = new Float32Array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0]);
