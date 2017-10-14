@@ -36,14 +36,18 @@ class Vector3 extends Float32Array {
   /**
    * Create a new vector.
    *
-   * @param {Array} arr Initial values
+   * @param {...*} args Arguments for new vector
    */
-  constructor(arr = DEFAULT) {
-    if (arr && arr.length > 3) {
-      throw new Error('Invalid length');
+  constructor(...args) {
+    if (args.length === 0) {
+      super(DEFAULT);
+    } else {
+      super(...args);
     }
 
-    super(arr);
+    if (this.length !== 3) {
+      throw new Error('Invalid length');
+    }
   }
 
   /**
