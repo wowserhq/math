@@ -28,6 +28,15 @@ const DEFAULT = [0.0, 0.0, 0.0];
 Object.freeze(DEFAULT);
 
 /**
+ * Element length
+ *
+ * @readonly
+ * @memberof Vector3
+ * @type {Number}
+ */
+const LENGTH = 3;
+
+/**
  * A 3-component vector.
  *
  * @extends Float32Array
@@ -45,7 +54,7 @@ class Vector3 extends Float32Array {
       super(...args);
     }
 
-    if (this.length !== 3) {
+    if (this.length !== LENGTH) {
       throw new Error('Invalid length');
     }
   }
@@ -145,19 +154,19 @@ class Vector3 extends Float32Array {
    * @returns {void}
    */
   static forEach(arr, cb) {
-    if (arr.length % 3 !== 0) {
+    if (arr.length % LENGTH !== 0) {
       throw new Error('Invalid length');
     }
 
     const l = arr.length;
     const v = new Vector3();
 
-    for (let i = 0; i < l; i += 3) {
+    for (let i = 0; i < l; i += LENGTH) {
       v[0] = arr[i];
       v[1] = arr[i + 1];
       v[2] = arr[i + 2];
 
-      cb.call(this, v, i / 3, arr);
+      cb.call(this, v, i / LENGTH, arr);
     }
   }
 
@@ -169,11 +178,11 @@ class Vector3 extends Float32Array {
    * @returns {Iterator} New iterator
    */
   static *keys(arr) {
-    if (arr.length % 3 !== 0) {
+    if (arr.length % LENGTH !== 0) {
       throw new Error('Invalid length');
     }
 
-    const l = arr.length / 3;
+    const l = arr.length / LENGTH;
 
     for (let i = 0; i < l; i++) {
       yield i;
@@ -203,14 +212,14 @@ class Vector3 extends Float32Array {
    * @returns {Iterator} New iterator
    */
   static *values(arr) {
-    if (arr.length % 3 !== 0) {
+    if (arr.length % LENGTH !== 0) {
       throw new Error('Invalid length');
     }
 
     const l = arr.length;
     const v = new Vector3();
 
-    for (let i = 0; i < l; i += 3) {
+    for (let i = 0; i < l; i += LENGTH) {
       v[0] = arr[i];
       v[1] = arr[i + 1];
       v[2] = arr[i + 2];
@@ -223,5 +232,7 @@ class Vector3 extends Float32Array {
 Vector3.AXIS = AXIS;
 
 Vector3.DEFAULT = DEFAULT;
+
+Vector3.LENGTH = LENGTH;
 
 export default Vector3;
