@@ -12,7 +12,7 @@ describe('Vector3', () => {
     test('returns new vector with default values', () => {
       const vector = new Vector3();
 
-      expect(vector.equals(Vector3.DEFAULT)).toBe(true);
+      expect(vector).toEqual(new Vector3(Vector3.DEFAULT));
     });
   });
 
@@ -21,14 +21,14 @@ describe('Vector3', () => {
       const vector1 = Vector3.of(1.0, 2.0, 3.0);
       const vector2 = Vector3.of(4.0, 5.0, 6.0);
 
-      expect(vector1.add(vector2).equals(Vector3.of(5.0, 7.0, 9.0))).toBe(true);
+      expect(vector1.add(vector2)).toEqual(Vector3.of(5.0, 7.0, 9.0));
     });
 
     test('returns expected result when adding negative vector', () => {
       const vector1 = Vector3.of(1.0, 2.0, 3.0);
       const vector2 = Vector3.of(-2.0, -3.0, -4.0);
 
-      expect(vector1.add(vector2).equals(Vector3.of(-1.0, -1.0, -1.0))).toBe(true);
+      expect(vector1.add(vector2)).toEqual(Vector3.of(-1.0, -1.0, -1.0));
     });
   });
 
@@ -37,14 +37,14 @@ describe('Vector3', () => {
       const vector = Vector3.of(1.0, 2.0, 3.0);
       const scalar = 4.0;
 
-      expect(vector.addScalar(scalar).equals(Vector3.of(5.0, 6.0, 7.0))).toBe(true);
+      expect(vector.addScalar(scalar)).toEqual(Vector3.of(5.0, 6.0, 7.0));
     });
 
     test('returns expected result when adding negative scalar', () => {
       const vector = Vector3.of(1.0, 2.0, 3.0);
       const scalar = -3.0;
 
-      expect(vector.addScalar(scalar).equals(Vector3.of(-2.0, -1.0, 0.0))).toBe(true);
+      expect(vector.addScalar(scalar)).toEqual(Vector3.of(-2.0, -1.0, 0.0));
     });
   });
 
@@ -127,14 +127,14 @@ describe('Vector3', () => {
       const vector1 = Vector3.of(7.0, 8.0, 9.0);
       const vector2 = Vector3.of(1.0, 2.0, 3.0);
 
-      expect(vector1.sub(vector2).equals(Vector3.of(6.0, 6.0, 6.0))).toBe(true);
+      expect(vector1.sub(vector2)).toEqual(Vector3.of(6.0, 6.0, 6.0));
     });
 
     test('returns expected result when subtracting negative vector', () => {
       const vector1 = Vector3.of(1.0, 2.0, 3.0);
       const vector2 = Vector3.of(-2.0, -3.0, -4.0);
 
-      expect(vector1.sub(vector2).equals(Vector3.of(3.0, 5.0, 7.0))).toBe(true);
+      expect(vector1.sub(vector2)).toEqual(Vector3.of(3.0, 5.0, 7.0));
     });
   });
 
@@ -143,27 +143,27 @@ describe('Vector3', () => {
       const vector = Vector3.of(7.0, 8.0, 9.0);
       const scalar = 4.0;
 
-      expect(vector.subScalar(scalar).equals(Vector3.of(3.0, 4.0, 5.0))).toBe(true);
+      expect(vector.subScalar(scalar)).toEqual(Vector3.of(3.0, 4.0, 5.0));
     });
 
     test('returns expected result when subtracting negative scalar', () => {
       const vector = Vector3.of(1.0, 2.0, 3.0);
       const scalar = -3.0;
 
-      expect(vector.subScalar(scalar).equals(Vector3.of(4.0, 5.0, 6.0))).toBe(true);
+      expect(vector.subScalar(scalar)).toEqual(Vector3.of(4.0, 5.0, 6.0));
     });
   });
 
   describe('forEach()', () => {
     test('iterates over array', () => {
       const arr = new Float32Array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0]);
-      let last;
+      const indices = [];
 
       Vector3.forEach(arr, function(v, i) {
-        last = i;
+        indices.push(i);
       });
 
-      expect(last).toBe(1);
+      expect(indices).toEqual([0, 1]);
     });
 
     test('permits manipulation of array', () => {
@@ -175,8 +175,7 @@ describe('Vector3', () => {
         arr.set(v, i * 3);
       });
 
-      expect(arr[0]).toBe(0.0);
-      expect(arr[3]).toBe(0.0);
+      expect(arr).toEqual(new Float32Array([0.0, 2.0, 3.0, 0.0, 5.0, 6.0]));
     });
   });
 
@@ -190,13 +189,13 @@ describe('Vector3', () => {
 
     test('iterates over array as vector indices', () => {
       const arr = new Float32Array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0]);
-      let last;
+      const indices = [];
 
       for (const k of Vector3.keys(arr)) {
-        last = k;
+        indices.push(k);
       }
 
-      expect(last).toBe(1);
+      expect(indices).toEqual([0, 1]);
     });
 
     test('permits manipulation of array', () => {
@@ -213,8 +212,7 @@ describe('Vector3', () => {
         arr.set(v, k * 3);
       }
 
-      expect(arr[1]).toBe(4.0);
-      expect(arr[4]).toBe(10.0);
+      expect(arr).toEqual(new Float32Array([1.0, 4.0, 3.0, 4.0, 10.0, 6.0]));
     });
   });
 
@@ -222,13 +220,13 @@ describe('Vector3', () => {
     test('returns new vector matching given values', () => {
       const vector = Vector3.of(1.0, 2.0, 3.0);
 
-      expect(vector.equals([1.0, 2.0, 3.0])).toBe(true);
+      expect(vector).toEqual(new Vector3([1.0, 2.0, 3.0]));
     });
 
     test('returns new default vector when not given values', () => {
       const vector = Vector3.of();
 
-      expect(vector.equals(Vector3.DEFAULT)).toBe(true);
+      expect(vector).toEqual(new Vector3(Vector3.DEFAULT));
     });
   });
 
@@ -242,13 +240,13 @@ describe('Vector3', () => {
 
     test('iterates over array as vectors', () => {
       const arr = new Float32Array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0]);
-      let last;
+      const vectors = [];
 
       for (const v of Vector3.values(arr)) {
-        last = v;
+        vectors.push(new Vector3(v));
       }
 
-      expect(last.equals([4.0, 5.0, 6.0])).toBe(true);
+      expect(vectors).toEqual([new Vector3([1.0, 2.0, 3.0]), new Vector3([4.0, 5.0, 6.0])]);
     });
   });
 });
