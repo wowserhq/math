@@ -48,6 +48,24 @@ describe('Vector3', () => {
     });
   });
 
+  describe('prototype.distance()', () => {
+    test('returns correct distance between two vectors', () => {
+      const vector1 = Vector3.of(1.0, 2.0, 3.0);
+      const vector2 = Vector3.of(4.0, 5.0, 6.0);
+
+      expect(vector1.distance(vector2)).toBeCloseTo(5.196152);
+      expect(vector2.distance(vector1)).toBeCloseTo(5.196152);
+    });
+
+    test('returns correct distance between two zero vectors', () => {
+      const vector1 = Vector3.of(0.0, 0.0, 0.0);
+      const vector2 = Vector3.of(0.0, 0.0, 0.0);
+
+      expect(vector1.distance(vector2)).toBe(0.0);
+      expect(vector2.distance(vector1)).toBe(0.0);
+    });
+  });
+
   describe('prototype.equals()', () => {
     test('returns true when vectors are exactly equal', () => {
       const vector1 = Vector3.of(1.0, 2.0, 3.0);

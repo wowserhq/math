@@ -88,6 +88,20 @@ class Vector3 extends Float32Array {
   }
 
   /**
+   * Return distance from this vector to given vector v.
+   *
+   * @param {Vector3} v Vector to compute distance to
+   * @returns {Number} Distance between this vector and given vector v
+   */
+  distance(v) {
+    const x = this[0] - v[0];
+    const y = this[1] - v[1];
+    const z = this[2] - v[2];
+
+    return Math.sqrt(x * x + y * y + z * z);
+  }
+
+  /**
    * Check for exact equality against the given vector.
    *
    * @param {Vector3} v Vector to compare
