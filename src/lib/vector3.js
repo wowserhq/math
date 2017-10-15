@@ -167,6 +167,10 @@ class Vector3 extends Float32Array {
       v[2] = arr[i + 2];
 
       cb.call(this, v, i / LENGTH, arr);
+
+      arr[i] = v[0];
+      arr[i + 1] = v[1];
+      arr[i + 2] = v[2];
     }
   }
 
@@ -225,6 +229,10 @@ class Vector3 extends Float32Array {
       v[2] = arr[i + 2];
 
       yield v;
+
+      arr[i] = v[0];
+      arr[i + 1] = v[1];
+      arr[i + 2] = v[2];
     }
   }
 }
