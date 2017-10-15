@@ -169,10 +169,8 @@ describe('Vector3', () => {
     test('permits manipulation of array', () => {
       const arr = new Float32Array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0]);
 
-      Vector3.forEach(arr, function(v, i) {
+      Vector3.forEach(arr, function(v) {
         v[0] = 0.0;
-
-        arr.set(v, i * 3);
       });
 
       expect(arr).toEqual(new Float32Array([0.0, 2.0, 3.0, 0.0, 5.0, 6.0]));
@@ -196,23 +194,6 @@ describe('Vector3', () => {
       }
 
       expect(indices).toEqual([0, 1]);
-    });
-
-    test('permits manipulation of array', () => {
-      const arr = new Float32Array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0]);
-      const v = new Vector3();
-
-      for (const k of Vector3.keys(arr)) {
-        v[0] = arr[k * 3];
-        v[1] = arr[k * 3 + 1];
-        v[2] = arr[k * 3 + 2];
-
-        v[1] *= 2.0;
-
-        arr.set(v, k * 3);
-      }
-
-      expect(arr).toEqual(new Float32Array([1.0, 4.0, 3.0, 4.0, 10.0, 6.0]));
     });
   });
 
@@ -247,6 +228,16 @@ describe('Vector3', () => {
       }
 
       expect(vectors).toEqual([new Vector3([1.0, 2.0, 3.0]), new Vector3([4.0, 5.0, 6.0])]);
+    });
+
+    test('permits manipulation of array', () => {
+      const arr = new Float32Array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0]);
+
+      for (const v of Vector3.values(arr)) {
+        v.addScalar(2.0);
+      }
+
+      expect(arr).toEqual(new Float32Array([3.0, 4.0, 5.0, 6.0, 7.0, 8.0]));
     });
   });
 });
