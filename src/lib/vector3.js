@@ -98,6 +98,19 @@ class Vector3 extends Float32Array {
   }
 
   /**
+   * Return the magnitude (length) of the vector.
+   *
+   * @returns {Number} Magnitude of the vector
+   */
+  magnitude() {
+    const x = this[0];
+    const y = this[1];
+    const z = this[2];
+
+    return Math.sqrt(x * x + y * y + z * z);
+  }
+
+  /**
    * Return the axis with the largest absolute value for the given vector. In cases of
    * equality, the returned axis is biased toward the right of X, Y, and Z.
    *
@@ -115,6 +128,29 @@ class Vector3 extends Float32Array {
     } else {
       return AXIS.X;
     }
+  }
+
+  /**
+   * Normalize the vector.
+   *
+   * @returns {Vector3} Self
+   */
+  normalize() {
+    const x = this[0];
+    const y = this[1];
+    const z = this[2];
+
+    const m = Math.sqrt(x * x + y * y + z * z);
+
+    if (m > 0.0) {
+      const im = 1.0 / m;
+
+      this[0] = x * im;
+      this[1] = y * im;
+      this[2] = z * im;
+    }
+
+    return this;
   }
 
   /**

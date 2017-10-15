@@ -71,6 +71,29 @@ describe('Vector3', () => {
     });
   });
 
+  describe('prototype.magnitude()', () => {
+    test('returns magnitude of positive vector', () => {
+      const vector = Vector3.of(5.0, 0.0, 0.0);
+      const magnitude = vector.magnitude();
+
+      expect(magnitude).toBeCloseTo(5.0);
+    });
+
+    test('returns magnitude of negative vector', () => {
+      const vector = Vector3.of(-0.5, 0.0, 0.0);
+      const magnitude = vector.magnitude();
+
+      expect(magnitude).toBeCloseTo(0.5);
+    });
+
+    test('returns magnitude of zero vector', () => {
+      const vector = Vector3.of(0.0, 0.0, 0.0);
+      const magnitude = vector.magnitude();
+
+      expect(magnitude).toEqual(0.0);
+    });
+  });
+
   describe('prototype.majorAxis()', () => {
     test('returns x axis when x is major', () => {
       const vector = Vector3.of(3.0, 2.0, 1.0);
@@ -119,6 +142,41 @@ describe('Vector3', () => {
       const axis = vector.majorAxis(vector);
 
       expect(axis).toEqual(Vector3.AXIS.Z);
+    });
+  });
+
+  describe('prototype.normalize()', () => {
+    test('normalizes vectors', () => {
+      const vector1 = Vector3.of(5.0, 0.0, 0.0);
+      vector1.normalize();
+
+      const vector2 = Vector3.of(0.5, 0.5, 0.5);
+      vector2.normalize();
+
+      const vector3 = Vector3.of(-0.5, -0.5, -0.5);
+      vector3.normalize();
+
+      expect(vector1.magnitude()).toBeCloseTo(1);
+      expect(vector2.magnitude()).toBeCloseTo(1);
+      expect(vector3.magnitude()).toBeCloseTo(1);
+    });
+
+    test('normalizes already normal vectors', () => {
+      const vector1 = Vector3.of(1.0, 0.0, 0.0);
+      vector1.normalize();
+
+      const vector2 = Vector3.of(0.0, 0.0, 1.0);
+      vector2.normalize();
+
+      expect(vector1.magnitude()).toBeCloseTo(1);
+      expect(vector2.magnitude()).toBeCloseTo(1);
+    });
+
+    test('does not normalize zero vector', () => {
+      const vector = Vector3.of(0.0, 0.0, 0.0);
+      vector.normalize();
+
+      expect(vector.magnitude()).toEqual(0.0);
     });
   });
 
