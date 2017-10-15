@@ -184,9 +184,8 @@ class Vector3 extends Float32Array {
   /**
    * Execute the provided function once for each vector in the given array.
    *
-   * @param {Float32Array} arr Array to traverse
+   * @param {(Float32Array|Array)} arr Array to traverse
    * @param {Function} cb Callback
-   *
    * @returns {void}
    */
   static forEach(arr, cb) {
@@ -213,8 +212,7 @@ class Vector3 extends Float32Array {
   /**
    * Generate an iterator capable of iterating over an array as vector indices.
    *
-   * @param {Float32Array | Array} arr Array to iterate
-   *
+   * @param {(Float32Array|Array)} arr Array to iterate
    * @returns {Iterator} New iterator
    */
   static *keys(arr) {
@@ -233,7 +231,6 @@ class Vector3 extends Float32Array {
    * Create a new vector with a variable number of arguments.
    *
    * @param {...*} args Arguments for new vector
-   *
    * @returns {Vector3} New vector
    */
   static of(...args) {
@@ -248,7 +245,6 @@ class Vector3 extends Float32Array {
    * Generate an iterator capable of iterating over an array as vectors.
    *
    * @param {(Float32Array|Array)} arr Array to iterate
-   *
    * @returns {Iterator} New iterator
    */
   static *values(arr) {
