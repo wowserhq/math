@@ -145,6 +145,38 @@ describe('Vector3', () => {
     });
   });
 
+  describe('prototype.multiply()', () => {
+    test('returns expected result when multiplying by positive vector', () => {
+      const vector1 = Vector3.of(1.0, 2.0, 3.0);
+      const vector2 = Vector3.of(4.0, 5.0, 6.0);
+
+      expect(vector1.multiply(vector2)).toEqual(Vector3.of(4.0, 10.0, 18.0));
+    });
+
+    test('returns expected result when multiplying by negative vector', () => {
+      const vector1 = Vector3.of(1.0, 2.0, 3.0);
+      const vector2 = Vector3.of(-2.0, -3.0, -4.0);
+
+      expect(vector1.multiply(vector2)).toEqual(Vector3.of(-2.0, -6.0, -12.0));
+    });
+  });
+
+  describe('prototype.multiplyScalar()', () => {
+    test('returns expected result when multiplying by positive scalar', () => {
+      const vector = Vector3.of(1.0, 2.0, 3.0);
+      const scalar = 4.0;
+
+      expect(vector.multiplyScalar(scalar)).toEqual(Vector3.of(4.0, 8.0, 12.0));
+    });
+
+    test('returns expected result when multiplying by negative scalar', () => {
+      const vector = Vector3.of(1.0, 2.0, 3.0);
+      const scalar = -3.0;
+
+      expect(vector.multiplyScalar(scalar)).toEqual(Vector3.of(-3.0, -6.0, -9.0));
+    });
+  });
+
   describe('prototype.normalize()', () => {
     test('normalizes vectors', () => {
       const vector1 = Vector3.of(5.0, 0.0, 0.0);

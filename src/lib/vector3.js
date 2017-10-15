@@ -131,6 +131,34 @@ class Vector3 extends Float32Array {
   }
 
   /**
+   * Multiply this vector by given vector v.
+   *
+   * @param {Vector3} v Vector to multiply by
+   * @returns {Vector3} Self
+   */
+  multiply(v) {
+    this[0] *= v[0];
+    this[1] *= v[1];
+    this[2] *= v[2];
+
+    return this;
+  }
+
+  /**
+   * Multiply this vector by given scalar s.
+   *
+   * @param {Number} s Scalar to multiply by
+   * @returns {Vector3} Self
+   */
+  multiplyScalar(s) {
+    this[0] *= s;
+    this[1] *= s;
+    this[2] *= s;
+
+    return this;
+  }
+
+  /**
    * Normalize the vector.
    *
    * @returns {Vector3} Self
