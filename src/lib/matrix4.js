@@ -32,6 +32,8 @@ class Matrix4 extends Float32Array {
   /**
    * Create a new matrix.
    *
+   * Matrix elements are stored such that x, y, z == this[12], this[13], this[14]
+   *
    * @param {...*} args Arguments for new matrix
    */
   constructor(...args) {
