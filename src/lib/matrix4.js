@@ -1,3 +1,5 @@
+import { EPSILON } from './common';
+
 /**
  * Default values (identity)
  *
@@ -46,6 +48,43 @@ class Matrix4 extends Float32Array {
     if (this.length !== LENGTH) {
       throw new Error('Invalid length');
     }
+  }
+
+  /**
+   * Compare this matrix with given matrix for approximate equality using given
+   * epsilon.
+   *
+   * @param {Matrix4} m Matrix to compare
+   * @param {Number} e Epsilon
+   * @returns {Boolean} Equality
+   */
+  approximates(m, e = EPSILON) {
+    const t0  = this[0],  t1  = this[1],  t2  = this[2],  t3  = this[3];
+    const t4  = this[4],  t5  = this[5],  t6  = this[6],  t7  = this[7];
+    const t8  = this[8],  t9  = this[9],  t10 = this[10], t11 = this[11];
+    const t12 = this[12], t13 = this[13], t14 = this[14], t15 = this[15];
+
+    const m0  = m[0],     m1  = m[1],     m2  = m[2],     m3  = m[3];
+    const m4  = m[4],     m5  = m[5],     m6  = m[6],     m7  = m[7];
+    const m8  = m[8],     m9  = m[9],     m10 = m[10],    m11 = m[11];
+    const m12 = m[12],    m13 = m[13],    m14 = m[14],    m15 = m[15];
+
+    return Math.abs(t0  - m0)  <= e * Math.max(1.0, Math.abs(t0),  Math.abs(m0))  &&
+           Math.abs(t1  - m1)  <= e * Math.max(1.0, Math.abs(t1),  Math.abs(m1))  &&
+           Math.abs(t2  - m2)  <= e * Math.max(1.0, Math.abs(t2),  Math.abs(m2))  &&
+           Math.abs(t3  - m3)  <= e * Math.max(1.0, Math.abs(t3),  Math.abs(m3))  &&
+           Math.abs(t4  - m4)  <= e * Math.max(1.0, Math.abs(t4),  Math.abs(m4))  &&
+           Math.abs(t5  - m5)  <= e * Math.max(1.0, Math.abs(t5),  Math.abs(m5))  &&
+           Math.abs(t6  - m6)  <= e * Math.max(1.0, Math.abs(t6),  Math.abs(m6))  &&
+           Math.abs(t7  - m7)  <= e * Math.max(1.0, Math.abs(t7),  Math.abs(m7))  &&
+           Math.abs(t8  - m8)  <= e * Math.max(1.0, Math.abs(t8),  Math.abs(m8))  &&
+           Math.abs(t9  - m9)  <= e * Math.max(1.0, Math.abs(t9),  Math.abs(m9))  &&
+           Math.abs(t10 - m10) <= e * Math.max(1.0, Math.abs(t10), Math.abs(m10)) &&
+           Math.abs(t11 - m11) <= e * Math.max(1.0, Math.abs(t11), Math.abs(m11)) &&
+           Math.abs(t12 - m12) <= e * Math.max(1.0, Math.abs(t12), Math.abs(m12)) &&
+           Math.abs(t13 - m13) <= e * Math.max(1.0, Math.abs(t13), Math.abs(m13)) &&
+           Math.abs(t14 - m14) <= e * Math.max(1.0, Math.abs(t14), Math.abs(m14)) &&
+           Math.abs(t15 - m15) <= e * Math.max(1.0, Math.abs(t15), Math.abs(m15));
   }
 
   /**
@@ -138,6 +177,43 @@ class Matrix4 extends Float32Array {
     this[13] = m0 * t1 + m1 * t5 + m2 * t9  + m3 * t13;
     this[14] = m0 * t2 + m1 * t6 + m2 * t10 + m3 * t14;
     this[15] = m0 * t3 + m1 * t7 + m2 * t11 + m3 * t15;
+
+    return this;
+  }
+
+  /**
+   * Set this matrix to a perspective projection matrix matching the given
+   * field of view, aspect ratio, near frustum, and far frustum.
+   *
+   * @param {Number} fov Field of view (in radians)
+   * @param {Number} aspect Aspect ratio
+   * @param {Number} near Near frustum
+   * @param {Number} far Far frustum
+   * @returns {Matrix4} Self
+   */
+  perspective(fov, aspect, near, far) {
+    const f = 1.0 / Math.tan(fov * 0.5);
+    const ir = 1.0 / (near - far);
+
+    this[0]  = f / aspect;
+    this[1]  = 0.0;
+    this[2]  = 0.0;
+    this[3]  = 0.0;
+
+    this[4]  = 0.0;
+    this[5]  = f;
+    this[6]  = 0.0;
+    this[7]  = 0.0;
+
+    this[8]  = 0.0;
+    this[9]  = 0.0;
+    this[10] = (near + far) * ir;
+    this[11] = -1.0;
+
+    this[12] = 0.0;
+    this[13] = 0.0;
+    this[14] = (near * far * 2.0) * ir;
+    this[15] = 0.0;
 
     return this;
   }
