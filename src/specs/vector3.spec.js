@@ -51,7 +51,7 @@ describe('Vector3', () => {
   describe('prototype.approximates()', () => {
     test('returns true when vectors are approximately equal', () => {
       const vector1 = Vector3.of(0.0, 0.0, 1.0);
-      const vector2 = Vector3.of(0.0, 0.0, 1.00001);
+      const vector2 = Vector3.of(0.0, 0.0, 1.000001);
 
       expect(vector1.approximates(vector2)).toBe(true);
     });

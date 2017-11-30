@@ -26,10 +26,10 @@ describe('Matrix4', () => {
       );
 
       const matrix2 = Matrix4.of(
-        1.00001, 0.0, 0.0, 0.0, // col 0
-        0.0,     1.0, 0.0, 0.0, // col 1
-        0.0,     0.0, 1.0, 0.0, // col 2
-        1.0,     2.0, 3.0, 1.0  // col 3
+        1.000001, 0.0, 0.0, 0.0, // col 0
+        0.0,      1.0, 0.0, 0.0, // col 1
+        0.0,      0.0, 1.0, 0.0, // col 2
+        1.0,      2.0, 3.0, 1.0  // col 3
       );
 
       expect(matrix1.approximates(matrix2)).toBe(true);
