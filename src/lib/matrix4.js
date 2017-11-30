@@ -51,12 +51,12 @@ class Matrix4 extends Float32Array {
   }
 
   /**
-   * Compare this matrix with given matrix for approximate equality using given
+   * Check for approximate equality against the given matrix using given
    * epsilon.
    *
    * @param {Matrix4} m Matrix to compare
    * @param {Number} e Epsilon
-   * @returns {Boolean} Equality
+   * @returns {Boolean} Approximate equality
    */
   approximates(m, e = EPSILON) {
     const t0  = this[0],  t1  = this[1],  t2  = this[2],  t3  = this[3];
@@ -90,7 +90,7 @@ class Matrix4 extends Float32Array {
   /**
    * Invert this matrix.
    *
-   * @returns {void}
+   * @returns {Matrix4} Self
    */
   invert() {
     const t0  = this[0],  t1  = this[1],  t2  = this[2],  t3  = this[3];

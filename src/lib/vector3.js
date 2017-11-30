@@ -90,12 +90,12 @@ class Vector3 extends Float32Array {
   }
 
   /**
-   * Compare this vector with given vector for approximate equality using given
+   * Check for approximate equality against the given vector using given
    * epsilon.
    *
    * @param {Vector3} v Vector to compare
    * @param {Number} e Epsilon
-   * @returns {Boolean} Equality
+   * @returns {Boolean} Approximate equality
    */
   approximates(v, e = EPSILON) {
     const t0  = this[0],  t1  = this[1],  t2  = this[2];
