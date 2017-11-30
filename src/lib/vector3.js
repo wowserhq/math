@@ -1,3 +1,5 @@
+import { EPSILON } from './common';
+
 /**
  * Axis constants
  *
@@ -88,6 +90,24 @@ class Vector3 extends Float32Array {
   }
 
   /**
+   * Compare this vector with given vector for approximate equality using given
+   * epsilon.
+   *
+   * @param {Vector3} v Vector to compare
+   * @param {Number} e Epsilon
+   * @returns {Boolean} Equality
+   */
+  approximates(v, e = EPSILON) {
+    const t0  = this[0],  t1  = this[1],  t2  = this[2];
+
+    const v0  = v[0],     v1  = v[1],     v2  = v[2];
+
+    return Math.abs(t0  - v0)  <= e * Math.max(1.0, Math.abs(t0),  Math.abs(v0))  &&
+           Math.abs(t1  - v1)  <= e * Math.max(1.0, Math.abs(t1),  Math.abs(v1))  &&
+           Math.abs(t2  - v2)  <= e * Math.max(1.0, Math.abs(t2),  Math.abs(v2));
+  }
+
+  /**
    * Return distance from this vector to given vector v.
    *
    * @param {Vector3} v Vector to compute distance to
@@ -154,6 +174,26 @@ class Vector3 extends Float32Array {
     this[0] *= v[0];
     this[1] *= v[1];
     this[2] *= v[2];
+
+    return this;
+  }
+
+  /**
+   * Multiply this vector by given matrix m.
+   *
+   * @param {Matrix4} m Matrix to multiply by
+   * @returns {Vector3} Self
+   */
+  multiplyMatrix4(m) {
+    const x = this[0];
+    const y = this[1];
+    const z = this[2];
+
+    const iw = 1.0 / (m[3] * x + m[7] * y + m[11] * z + m[15]);
+
+    this[0] = (m[0] * x + m[4] * y + m[8]  * z + m[12]) * iw;
+    this[1] = (m[1] * x + m[5] * y + m[9]  * z + m[13]) * iw;
+    this[2] = (m[2] * x + m[6] * y + m[10] * z + m[14]) * iw;
 
     return this;
   }

@@ -1,4 +1,4 @@
-import { Vector3 } from '../lib';
+import { Matrix4, Vector3 } from '../lib';
 
 describe('Vector3', () => {
   describe('prototype.constructor()', () => {
@@ -45,6 +45,29 @@ describe('Vector3', () => {
       const scalar = -3.0;
 
       expect(vector.addScalar(scalar)).toEqual(Vector3.of(-2.0, -1.0, 0.0));
+    });
+  });
+
+  describe('prototype.approximates()', () => {
+    test('returns true when vectors are approximately equal', () => {
+      const vector1 = Vector3.of(0.0, 0.0, 1.0);
+      const vector2 = Vector3.of(0.0, 0.0, 1.00001);
+
+      expect(vector1.approximates(vector2)).toBe(true);
+    });
+
+    test('returns true when vectors are exactly equal', () => {
+      const vector1 = Vector3.of(0.0, 0.0, 1.0);
+      const vector2 = Vector3.of(0.0, 0.0, 1.0);
+
+      expect(vector1.approximates(vector2)).toBe(true);
+    });
+
+    test('returns false when vectors are not equal', () => {
+      const vector1 = Vector3.of(0.0, 0.0, 1.0);
+      const vector2 = Vector3.of(0.0, 0.0, 2.0);
+
+      expect(vector1.approximates(vector2)).toBe(false);
     });
   });
 
@@ -176,6 +199,30 @@ describe('Vector3', () => {
       const vector2 = Vector3.of(-2.0, -3.0, -4.0);
 
       expect(vector1.multiply(vector2)).toEqual(Vector3.of(-2.0, -6.0, -12.0));
+    });
+  });
+
+  describe('prototype.multiplyMatrix4()', () => {
+    test('returns expected result when multiplying by identity matrix', () => {
+      const vector = Vector3.of(1.0, 2.0, 3.0);
+      const matrix = new Matrix4();
+
+      expect(vector.multiplyMatrix4(matrix)).toEqual(Vector3.of(1.0, 2.0, 3.0));
+    });
+
+    test('returns expected result when multiplying by given matrix', () => {
+      const vector = Vector3.of(1.0, 2.0, 3.0);
+
+      const matrix = Matrix4.of(
+        3.0, 2.0, 1.0, 0.0, // col 0
+        3.1, 2.1, 1.1, 0.1, // col 1
+        3.2, 2.2, 1.2, 0.2, // col 2
+        3.3, 2.3, 1.3, 0.3  // col 3
+      );
+
+      vector.multiplyMatrix4(matrix);
+
+      expect(vector.approximates(Vector3.of(20.09091, 13.72727, 7.36364))).toBe(true);
     });
   });
 
