@@ -98,13 +98,13 @@ class Vector3 extends Float32Array {
    * @returns {Boolean} Approximate equality
    */
   approximates(v, e = EPSILON) {
-    const t0  = this[0],  t1  = this[1],  t2  = this[2];
+    const t0 = this[0], t1 = this[1], t2 = this[2];
 
-    const v0  = v[0],     v1  = v[1],     v2  = v[2];
+    const v0 = v[0],    v1 = v[1],    v2 = v[2];
 
-    return Math.abs(t0  - v0)  <= e * Math.max(1.0, Math.abs(t0),  Math.abs(v0))  &&
-           Math.abs(t1  - v1)  <= e * Math.max(1.0, Math.abs(t1),  Math.abs(v1))  &&
-           Math.abs(t2  - v2)  <= e * Math.max(1.0, Math.abs(t2),  Math.abs(v2));
+    return Math.abs(t0 - v0) <= e * Math.max(1.0, Math.abs(t0), Math.abs(v0)) &&
+           Math.abs(t1 - v1) <= e * Math.max(1.0, Math.abs(t1), Math.abs(v1)) &&
+           Math.abs(t2 - v2) <= e * Math.max(1.0, Math.abs(t2), Math.abs(v2));
   }
 
   /**
