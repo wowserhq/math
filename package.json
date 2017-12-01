@@ -10,7 +10,7 @@
     "precommit": "npm run lint",
     "prepublishOnly": "npm run build",
     "doc": "jsdoc -c .jsdocrc -d doc",
-    "compat": "browserslist --coverage \"last 2 versions, not ie 1-11, not android 1-56\""
+    "compat": "browserslist --coverage \"last 2 versions, not ie 1-11, not android 1-62\""
   },
   "files": [
     "README.md",
