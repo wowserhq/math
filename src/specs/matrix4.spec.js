@@ -1,4 +1,4 @@
-import { DEG2RAD, Matrix4 } from '../lib';
+import { DEG2RAD, Matrix4, Quaternion, Vector3 } from '../lib';
 
 describe('Matrix4', () => {
   describe('prototype.constructor()', () => {
@@ -69,6 +69,25 @@ describe('Matrix4', () => {
       );
 
       expect(matrix1.approximates(matrix2)).toBe(false);
+    });
+  });
+
+  describe('prototype.compose()', () => {
+    test('composes this matrix', () => {
+      const position = Vector3.of(1.0, 2.0, 3.0);
+      const rotation = Quaternion.of(0.1, -0.1, 0.5, 1.0);
+      const scale = Vector3.of(0.9, 0.8, 0.7);
+
+      const matrix = new Matrix4().compose(position, rotation, scale);
+
+      /* eslint-disable */
+      expect(matrix.approximates(Matrix4.of(
+         0.431999,  0.881999, 0.270000, 0.0, // col 0
+        -0.815999,  0.384000, 0.080000, 0.0, // col 1
+        -0.070000, -0.209999, 0.671999, 0.0, // col 2
+         1.0,       2.0,      3.0,      1.0  // col 3
+      ))).toBe(true);
+      /* eslint-enable */
     });
   });
 

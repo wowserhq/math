@@ -88,6 +88,60 @@ class Matrix4 extends Float32Array {
   }
 
   /**
+   * Set this matrix to a transform matrix composed from the given position,
+   * rotation, and scale.
+   *
+   * @param {Vector3} p Position vector
+   * @param {Quat} r Rotation quaternion
+   * @param {Vector3} s Scale vector
+   * @returns {Matrix4} Self
+   */
+  compose(p, r, s) {
+    const sx = s[0], sy = s[1], sz = s[2];
+
+    const rx = r[0], ry = r[1], rz = r[2], rw = r[3];
+
+    const rx2 = rx + rx;
+    const ry2 = ry + ry;
+    const rz2 = rz + rz;
+
+    const rxrx2 = rx * rx2;
+    const rxry2 = rx * ry2;
+    const rxrz2 = rx * rz2;
+
+    const ryry2 = ry * ry2;
+    const ryrz2 = ry * rz2;
+
+    const rzrz2 = rz * rz2;
+
+    const rwrx2 = rw * rx2;
+    const rwry2 = rw * ry2;
+    const rwrz2 = rw * rz2;
+
+    this[0]  = (1.0 - (ryry2 + rzrz2)) * sx;
+    this[1]  = (rxry2 + rwrz2) * sx;
+    this[2]  = (rxrz2 - rwry2) * sx;
+    this[3]  = 0.0;
+
+    this[4]  = (rxry2 - rwrz2) * sy;
+    this[5]  = (1.0 - (rxrx2 + rzrz2)) * sy;
+    this[6]  = (ryrz2 + rwrx2) * sy;
+    this[7]  = 0.0;
+
+    this[8]  = (rxrz2 + rwry2) * sz;
+    this[9]  = (ryrz2 - rwrx2) * sz;
+    this[10] = (1.0 - (rxrx2 + ryry2)) * sz;
+    this[11] = 0.0;
+
+    this[12] = p[0];
+    this[13] = p[1];
+    this[14] = p[2];
+    this[15] = 1.0;
+
+    return this;
+  }
+
+  /**
    * Invert this matrix.
    *
    * @returns {Matrix4} Self
