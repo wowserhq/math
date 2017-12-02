@@ -76,6 +76,45 @@ class Quaternion extends Float32Array {
   }
 
   /**
+   * Return the magnitude (length) of the quaternion.
+   *
+   * @returns {Number} Magnitude of the quaternion
+   */
+  magnitude() {
+    const x = this[0];
+    const y = this[1];
+    const z = this[2];
+    const w = this[3];
+
+    return Math.sqrt(x * x + y * y + z * z + w * w);
+  }
+
+  /**
+   * Normalize the quaternion.
+   *
+   * @returns {Quaternion} Self
+   */
+  normalize() {
+    const x = this[0];
+    const y = this[1];
+    const z = this[2];
+    const w = this[3];
+
+    const m = Math.sqrt(x * x + y * y + z * z + w * w);
+
+    if (m > 0.0) {
+      const im = 1.0 / m;
+
+      this[0] = x * im;
+      this[1] = y * im;
+      this[2] = z * im;
+      this[3] = w * im;
+    }
+
+    return this;
+  }
+
+  /**
    * Execute the provided function once for each quaternion in the given array.
    *
    * @param {(Float32Array|Array)} arr Array to traverse

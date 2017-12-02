@@ -62,6 +62,64 @@ describe('Quaternion', () => {
     });
   });
 
+  describe('prototype.magnitude()', () => {
+    test('returns magnitude of positive quaternion', () => {
+      const quaternion = Quaternion.of(5.0, 0.0, 0.0, 0.0);
+      const magnitude = quaternion.magnitude();
+
+      expect(magnitude).toBeCloseTo(5.0);
+    });
+
+    test('returns magnitude of negative quaternion', () => {
+      const quaternion = Quaternion.of(-0.5, 0.0, 0.0, 0.0);
+      const magnitude = quaternion.magnitude();
+
+      expect(magnitude).toBeCloseTo(0.5);
+    });
+
+    test('returns magnitude of zero quaternion', () => {
+      const quaternion = Quaternion.of(0.0, 0.0, 0.0, 0.0);
+      const magnitude = quaternion.magnitude();
+
+      expect(magnitude).toEqual(0.0);
+    });
+  });
+
+  describe('prototype.normalize()', () => {
+    test('normalizes quaternions', () => {
+      const quaternion1 = Quaternion.of(5.0, 0.0, 0.0, 0.0);
+      quaternion1.normalize();
+
+      const quaternion2 = Quaternion.of(0.5, 0.5, 0.5, 0.5);
+      quaternion2.normalize();
+
+      const quaternion3 = Quaternion.of(-0.5, -0.5, -0.5, -0.5);
+      quaternion3.normalize();
+
+      expect(quaternion1.magnitude()).toBeCloseTo(1);
+      expect(quaternion2.magnitude()).toBeCloseTo(1);
+      expect(quaternion3.magnitude()).toBeCloseTo(1);
+    });
+
+    test('normalizes already normal quaternions', () => {
+      const quaternion1 = Quaternion.of(1.0, 0.0, 0.0, 0.0);
+      quaternion1.normalize();
+
+      const quaternion2 = Quaternion.of(0.0, 0.0, 0.0, 1.0);
+      quaternion2.normalize();
+
+      expect(quaternion1.magnitude()).toBeCloseTo(1);
+      expect(quaternion2.magnitude()).toBeCloseTo(1);
+    });
+
+    test('does not normalize zero quaternion', () => {
+      const quaternion = Quaternion.of(0.0, 0.0, 0.0, 0.0);
+      quaternion.normalize();
+
+      expect(quaternion.magnitude()).toEqual(0.0);
+    });
+  });
+
   describe('forEach()', () => {
     test('iterates over array', () => {
       const arr = new Float32Array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0]);
