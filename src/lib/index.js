@@ -1,6 +1,7 @@
 import { DEG2RAD, EPSILON } from './common';
 import Matrix4 from './matrix4';
 import * as Plane from './plane';
+import Quaternion from './quaternion';
 import Vector3 from './vector3';
 
 export {
@@ -8,5 +9,6 @@ export {
   EPSILON,
   Matrix4,
   Plane,
+  Quaternion,
   Vector3
 };
