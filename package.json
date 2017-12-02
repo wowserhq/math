@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint --ignore-path .gitignore .",
     "build": "npm run test && webpack",
-    "test": "npm run lint && jest",
+    "test": "npm run lint && jest --config .jestrc.json",
     "precommit": "npm run lint",
     "prepublishOnly": "npm run build",
     "doc": "jsdoc -c .jsdocrc -d doc",
