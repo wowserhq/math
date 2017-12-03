@@ -85,6 +85,40 @@ describe('Quaternion', () => {
     });
   });
 
+  describe('prototype.multiply()', () => {
+    test('returns expected result when multiplying by identity quaternion', () => {
+      const quaternion1 = Quaternion.of(0.1, 0.2, 0.3, 0.4);
+      const quaternion2 = Quaternion.of(0.0, 0.0, 0.0, 1.0);
+
+      expect(quaternion1.multiply(quaternion2)).toEqual(Quaternion.of(0.1, 0.2, 0.3, 0.4));
+    });
+
+    test('returns expected result when multiplying by zero quaternion', () => {
+      const quaternion1 = Quaternion.of(0.1, 0.2, 0.3, 0.4);
+      const quaternion2 = Quaternion.of(0.0, 0.0, 0.0, 0.0);
+
+      expect(quaternion1.multiply(quaternion2)).toEqual(Quaternion.of(0.0, 0.0, 0.0, 0.0));
+    });
+
+    test('returns expected result when multiplying by positive quaternion', () => {
+      const quaternion1 = Quaternion.of(0.1, 0.2, 0.3, 0.4);
+      const quaternion2 = Quaternion.of(0.5, 0.5, 0.5, 1.0);
+
+      expect(quaternion1.multiply(quaternion2).approximates(
+        Quaternion.of(0.25, 0.5, 0.45, 0.1)
+      )).toBe(true);
+    });
+
+    test('returns expected result when multiplying by negative quaternion', () => {
+      const quaternion1 = Quaternion.of(0.1, 0.2, 0.3, 0.4);
+      const quaternion2 = Quaternion.of(-0.5, -0.5, -0.5, -1.0);
+
+      expect(quaternion1.multiply(quaternion2).approximates(
+        Quaternion.of(-0.25, -0.5, -0.45, -0.1)
+      )).toBe(true);
+    });
+  });
+
   describe('prototype.normalize()', () => {
     test('normalizes quaternions', () => {
       const quaternion1 = Quaternion.of(5.0, 0.0, 0.0, 0.0);
