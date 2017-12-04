@@ -90,6 +90,24 @@ class Quaternion extends Float32Array {
   }
 
   /**
+   * Multiply this quaternion by given quaternion.
+   *
+   * @param {Quaternion} q Quaternion to multiply by
+   * @returns {Quaternion} Self
+   */
+  multiply(q) {
+    const tx = this[0], ty = this[1], tz = this[2], tw = this[3];
+    const qx = q[0],    qy = q[1],    qz = q[2],    qw = q[3];
+
+    this[0] = tx * qw + tw * qx + ty * qz - tz * qy;
+    this[1] = ty * qw + tw * qy + tz * qx - tx * qz;
+    this[2] = tz * qw + tw * qz + tx * qy - ty * qx;
+    this[3] = tw * qw - tx * qx - ty * qy - tz * qz;
+
+    return this;
+  }
+
+  /**
    * Normalize the quaternion.
    *
    * @returns {Quaternion} Self
