@@ -149,6 +149,138 @@ describe('Matrix4', () => {
     });
   });
 
+  describe('prototype.lookAt()', () => {
+    test('creates view matrix with positive offset from eye to center, and z up vector', () => {
+      const eye = Vector3.of(1.0, 1.0, 1.0);
+      const center = Vector3.of(10.0, 10.0, 10.0);
+      const up = Vector3.of(0.0, 0.0, 1.0);
+
+      const matrix = new Matrix4().lookAt(eye, center, up);
+
+      /* eslint-disable */
+      expect(matrix.approximates(Matrix4.of(
+         0.7071068287, -0.4082481861,  0.5773502588, 0.0, // col 0
+        -0.7071067095, -0.4082484245,  0.5773502588, 0.0, // col 1
+         0.0,           0.8164966106,  0.5773502588, 0.0, // col 2
+         0.0,           0.0,          -1.732050776,  1.0  // col 3
+      ))).toBe(true);
+      /* eslint-enable */
+    });
+
+    test('creates view matrix with positive offset from eye to center, and y up vector', () => {
+      const eye = Vector3.of(1.0, 1.0, 1.0);
+      const center = Vector3.of(10.0, 10.0, 10.0);
+      const up = Vector3.of(0.0, 1.0, 0.0);
+
+      const matrix = new Matrix4().lookAt(eye, center, up);
+
+      /* eslint-disable */
+      expect(matrix.approximates(Matrix4.of(
+        -0.7071067691, -0.4082483053,  0.5773502588, 0.0, // col 0
+         0.0,           0.8164966106,  0.5773502588, 0.0, // col 1
+         0.7071067691, -0.4082483053,  0.5773502588, 0.0, // col 2
+         0.0,           0.0,          -1.732050776,  1.0  // col 3
+      ))).toBe(true);
+      /* eslint-enable */
+    });
+
+    test('creates view matrix with negative offset from eye to center, and z up vector', () => {
+      const eye = Vector3.of(1.0, 2.0, 3.0);
+      const center = Vector3.of(-21.0, -11.0, -9.0);
+      const up = Vector3.of(0.0, 0.0, 1.0);
+
+      const matrix = new Matrix4().lookAt(eye, center, up);
+
+      /* eslint-disable */
+      expect(matrix.approximates(Matrix4.of(
+        -0.5087293386, -0.3659469187, -0.7792800069, 0.0, // col 0
+         0.8609265089, -0.2162415236, -0.4604836404, 0.0, // col 1
+         0.0,           0.9051643014, -0.4250618219, 0.0, // col 2
+        -1.213124156,  -1.917062998,   2.975432873,  1.0  // col 3
+      ))).toBe(true);
+      /* eslint-enable */
+    });
+
+    test('creates view matrix from identical eye and center', () => {
+      const eye = Vector3.of(0.0, 0.0, 0.0);
+      const center = Vector3.of(0.0, 0.0, 0.0);
+      const up = Vector3.of(0.0, 0.0, 1.0);
+
+      const matrix = new Matrix4().lookAt(eye, center, up);
+
+      expect(matrix.approximates(Matrix4.of(
+        1.0, 0.0, 0.0, 0.0, // col 0
+        0.0, 1.0, 0.0, 0.0, // col 1
+        0.0, 0.0, 1.0, 0.0, // col 2
+        0.0, 0.0, 0.0, 1.0  // col 3
+      ))).toBe(true);
+    });
+
+    test('creates view matrix with zero up vector', () => {
+      const eye = Vector3.of(0.0, 0.0, 0.0);
+      const center = Vector3.of(1.0, 1.0, 1.0);
+      const up = Vector3.of(0.0, 0.0, 0.0);
+
+      const matrix = new Matrix4().lookAt(eye, center, up);
+
+      expect(matrix.approximates(Matrix4.of(
+        0.0, 0.0, 0.577350, 0.0, // col 0
+        0.0, 0.0, 0.577350, 0.0, // col 1
+        0.0, 0.0, 0.577350, 0.0, // col 2
+        0.0, 0.0, 0.0,      1.0  // col 3
+      ))).toBe(true);
+    });
+
+    test('creates view matrix from sampled data a', () => {
+      const eye = Vector3.of(0.0, 0.0, 0.0);
+      const center = Vector3.of(-18.9, 0.0, 0.0);
+      const up = Vector3.of(0.0, 0.0, 1.0);
+
+      const matrix = new Matrix4().lookAt(eye, center, up);
+
+      expect(matrix.approximates(Matrix4.of(
+        0.0, 0.0, -1.0, 0.0, // col 0
+        1.0, 0.0,  0.0, 0.0, // col 1
+        0.0, 1.0,  0.0, 0.0, // col 2
+        0.0, 0.0,  0.0, 1.0  // col 3
+      ))).toBe(true);
+    });
+
+    test('creates view matrix from sampled data b', () => {
+      const eye = Vector3.of(0.0, 0.0, 0.0);
+      const center = Vector3.of(-8.28, -0.09, 0.81);
+      const up = Vector3.of(0.0, 0.0, 1.0);
+
+      const matrix = new Matrix4().lookAt(eye, center, up);
+
+      /* eslint-disable */
+      expect(matrix.approximates(Matrix4.of(
+        -0.010868, 0.097349, -0.995190, 0.0, // col 0
+         0.999940, 0.001058, -0.010817, 0.0, // col 1
+         0.0,      0.995249,  0.097355, 0.0, // col 2
+         0.0,      0.0,       0.0,      1.0  // col 3
+      ))).toBe(true);
+      /* eslint-enable */
+    });
+
+    test('creates view matrix from sampled data c', () => {
+      const eye = Vector3.of(0.0, 0.0, 0.0);
+      const center = Vector3.of(0.8591673374, 0.320672214, -0.3987491131);
+      const up = Vector3.of(0.0, 0.0, 1.0);
+
+      const matrix = new Matrix4().lookAt(eye, center, up);
+
+      /* eslint-disable */
+      expect(matrix.approximates(Matrix4.of(
+         0.3496741652, 0.3735766112,  0.8591673374, 0.0, // col 0
+        -0.9368713498, 0.1394322663,  0.3206722140, 0.0, // col 1
+         0.0,          0.9170600771, -0.3987491130, 0.0, // col 2
+         0.0,          0.0,           0.0,          1.0  // col 3
+      ))).toBe(true);
+      /* eslint-enable */
+    });
+  });
+
   describe('prototype.multiply()', () => {
     test('multiplies this matrix by given matrix', () => {
       const matrix1 = Matrix4.of(
