@@ -226,17 +226,110 @@ describe('Matrix4', () => {
     });
   });
 
-  describe('prototype.perspective()', () => {
-    test('creates perspective projection', () => {
+  describe('prototype.projectPerspectiveDiagonal()', () => {
+    test('creates projection matrix from sampled data a', () => {
       const matrix = new Matrix4();
 
-      matrix.perspective(45.0 * DEG2RAD, 1920.0 / 1080.0, 0.1, 1000.0);
+      matrix.projectPerspectiveDiagonal(2.094395161, 1.777777791, 0.2222222239, 2777.777832);
 
       expect(matrix.approximates(Matrix4.of(
-        1.35799, 0.0,      0.0,      0.0, // col 0
-        0.0,     2.41421,  0.0,      0.0, // col 1
-        0.0,     0.0,     -1.00020, -1.0, // col 2
-        0.0,     0.0,     -0.20002,  0.0  // col 3
+        0.997638464, 0.0,          0.0,          0.0, // col 0
+        0.0,         1.773579478,  0.0,          0.0, // col 1
+        0.0,         0.0,          1.000159979,  1.0, // col 2
+        0.0,         0.0,         -0.4444800019, 0.0  // col 3
+      ))).toBe(true);
+    });
+
+    test('creates projection matrix from sampled data b', () => {
+      const matrix = new Matrix4();
+
+      matrix.projectPerspectiveDiagonal(1.134464025, 1.777777791, 0.2222222239, 611.111145);
+
+      expect(matrix.approximates(Matrix4.of(
+        1.970299959, 0.0,          0.0,          0.0, // col 0
+        0.0,         3.502755404,  0.0,          0.0, // col 1
+        0.0,         0.0,          1.000727534,  1.0, // col 2
+        0.0,         0.0,         -0.4446061254, 0.0  // col 3
+      ))).toBe(true);
+    });
+  });
+
+  describe('prototype.projectPerspective()', () => {
+    test('creates projection matrix with 90 degree fov', () => {
+      const matrix = new Matrix4();
+
+      matrix.projectPerspective(90.0 * DEG2RAD, 1280.0 / 960.0, 1.0, 1000.0);
+
+      expect(matrix.approximates(Matrix4.of(
+        0.7499999404, 0.0,  0.0,         0.0, // col 0
+        0.0,          1.0,  0.0,         0.0, // col 1
+        0.0,          0.0,  1.002002001, 1.0, // col 2
+        0.0,          0.0, -2.002002001, 0.0  // col 3
+      ))).toBe(true);
+    });
+
+    test('creates projection matrix with 179.99 degree fov', () => {
+      const matrix = new Matrix4();
+
+      matrix.projectPerspective(179.99 * DEG2RAD, 1280.0 / 960.0, 1.0, 1000.0);
+
+      expect(matrix.approximates(Matrix4.of(
+        0.00006541310722, 0.0,             0.0,         0.0, // col 0
+        0.0,              0.000087217486,  0.0,         0.0, // col 1
+        0.0,              0.0,             1.002002001, 1.0, // col 2
+        0.0,              0.0,            -2.002002001, 0.0  // col 3
+      ))).toBe(true);
+    });
+
+    test('creates projection matrix with very close near depth', () => {
+      const matrix = new Matrix4();
+
+      matrix.projectPerspective(90.0 * DEG2RAD, 1920.0 / 1080.0, 0.001, 1000.0);
+
+      expect(matrix.approximates(Matrix4.of(
+        0.5625, 0.0,  0.0,           0.0, // col 0
+        0.0,    1.0,  0.0,           0.0, // col 1
+        0.0,    0.0,  1.000002027,   1.0, // col 2
+        0.0,    0.0, -0.00200000219, 0.0  // col 3
+      ))).toBe(true);
+    });
+
+    test('creates projection matrix with very close near and far depth', () => {
+      const matrix = new Matrix4();
+
+      matrix.projectPerspective(90.0 * DEG2RAD, 1920.0 / 1080.0, 0.001, 0.002);
+
+      expect(matrix.approximates(Matrix4.of(
+        0.5625, 0.0,  0.0,           0.0, // col 0
+        0.0,    1.0,  0.0,           0.0, // col 1
+        0.0,    0.0,  3.0,           1.0, // col 2
+        0.0,    0.0, -0.00400000019, 0.0  // col 3
+      ))).toBe(true);
+    });
+
+    test('creates projection matrix from sampled data a', () => {
+      const matrix = new Matrix4();
+
+      matrix.projectPerspective(1.256636977, 1.333333492, 0.2222222239, 2777.777832);
+
+      expect(matrix.approximates(Matrix4.of(
+        1.032286406, 0.0,          0.0,          0.0, // col 0
+        0.0,         1.376381993,  0.0,          0.0, // col 1
+        0.0,         0.0,          1.000159979,  1.0, // col 2
+        0.0,         0.0,         -0.4444800019, 0.0  // col 3
+      ))).toBe(true);
+    });
+
+    test('creates projection matrix from sampled data b', () => {
+      const matrix = new Matrix4();
+
+      matrix.projectPerspective(1.026800752, 1.777777791, 0.2222222239, 2777.777832);
+
+      expect(matrix.approximates(Matrix4.of(
+        0.997638464, 0.0,          0.0,          0.0, // col 0
+        0.0,         1.773579478,  0.0,          0.0, // col 1
+        0.0,         0.0,          1.000159979,  1.0, // col 2
+        0.0,         0.0,         -0.4444800019, 0.0  // col 3
       ))).toBe(true);
     });
   });
