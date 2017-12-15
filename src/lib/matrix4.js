@@ -392,6 +392,33 @@ class Matrix4 extends Float32Array {
   }
 
   /**
+   * Transpose this matrix.
+   *
+   * @returns {Matrix4} Self
+   */
+  transpose() {
+    const t1  = this[1],  t2  = this[2],  t3  = this[3],  t4  = this[4];
+    const t6  = this[6],  t7  = this[7],  t8  = this[8],  t9  = this[9];
+    const t11 = this[11], t12 = this[12], t13 = this[13], t14 = this[14];
+
+    this[1]  = t4;
+    this[2]  = t8;
+    this[3]  = t12;
+
+    this[4]  = t1;
+    this[6]  = t9;
+    this[7]  = t13;
+
+    this[8]  = t2;
+    this[9]  = t6;
+    this[11] = t14;
+
+    this[12] = t3;
+    this[13] = t7;
+    this[14] = t11;
+  }
+
+  /**
    * Create a new matrix with a variable number of arguments.
    *
    * @param {...*} args Arguments for new matrix
