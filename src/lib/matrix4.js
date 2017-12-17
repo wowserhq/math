@@ -321,17 +321,31 @@ class Matrix4 extends Float32Array {
 
   /**
    * Set this matrix to a perspective projection matrix matching the given
-   * field of view, aspect ratio, near frustum, and far frustum.
+   * vertical field of view, aspect ratio, near frustum, and far frustum.
    *
-   * @param {Number} fov Field of view (in radians)
+   * The resulting projection matrix is left-handed and has a depth range
+   * from -1-to-1.
+   *
+   * This implementation is compatible with GxuXformCreateProjection_Exact.
+   *
+   * Note that the client performs various adjustments to this matrix
+   * depending on the targeted rendering API:
+   *
+   * - For OpenGL, the matrix is converted from left-handed to right-
+   *   handed by flipping the signs of elements 8-11.
+   *
+   * - For Direct3D, the matrix is kept left-handed, but the depth range
+   *   is converted from -1-to-1 to 0-to-1.
+   *
+   * @param {Number} fovy Vertical field of view (in radians)
    * @param {Number} aspect Aspect ratio
    * @param {Number} near Near frustum
    * @param {Number} far Far frustum
    * @returns {Matrix4} Self
    */
-  perspective(fov, aspect, near, far) {
-    const f = 1.0 / Math.tan(fov * 0.5);
-    const ir = 1.0 / (near - far);
+  projectPerspective(fovy, aspect, near, far) {
+    const f = 1.0 / Math.tan(fovy * 0.5);
+    const ir = 1.0 / (far - near);
 
     this[0]  = f / aspect;
     this[1]  = 0.0;
@@ -345,15 +359,36 @@ class Matrix4 extends Float32Array {
 
     this[8]  = 0.0;
     this[9]  = 0.0;
-    this[10] = (near + far) * ir;
-    this[11] = -1.0;
+    this[10] = (far + near) * ir;
+    this[11] = 1.0;
 
     this[12] = 0.0;
     this[13] = 0.0;
-    this[14] = (near * far * 2.0) * ir;
+    this[14] = -(2.0 * far * near) * ir;
     this[15] = 0.0;
 
     return this;
+  }
+
+  /**
+   * Set this matrix to a perspective projection matrix using the given
+   * diagonal field of view, aspect ratio, near frustum, and far frustum.
+   *
+   * The given diagonal field of view is converted to a vertical field of
+   * view prior to calling projectPerspective. All other parameters are
+   * left unchanged.
+   *
+   * This implementation is compatible with GxuXformCreateProjection_SG.
+   *
+   * @param {Number} fovd Diagonal field of view (in radians)
+   * @param {Number} aspect Aspect ratio
+   * @param {Number} near Near frustum
+   * @param {Number} far Far frustum
+   * @returns {Matrix4} Self
+   */
+  projectPerspectiveDiagonal(fovd, aspect, near, far) {
+    const fovy = fovd / Math.sqrt(aspect * aspect + 1.0);
+    return this.projectPerspective(fovy, aspect, near, far);
   }
 
   /**
