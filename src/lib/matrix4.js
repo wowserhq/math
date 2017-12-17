@@ -392,6 +392,30 @@ class Matrix4 extends Float32Array {
   }
 
   /**
+   * Scale this matrix by the given factor.
+   *
+   * This implementation is compatible with C44Matrix::Scale(float).
+   *
+   * @param {Number} factor Scaling factor
+   * @returns {Matrix4} Self
+   */
+  scaleByNumber(factor) {
+    this[0]  *= factor;
+    this[1]  *= factor;
+    this[2]  *= factor;
+
+    this[4]  *= factor;
+    this[5]  *= factor;
+    this[6]  *= factor;
+
+    this[8]  *= factor;
+    this[9]  *= factor;
+    this[10] *= factor;
+
+    return this;
+  }
+
+  /**
    * Transpose this matrix.
    *
    * @returns {Matrix4} Self

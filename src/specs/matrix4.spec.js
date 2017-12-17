@@ -466,6 +466,74 @@ describe('Matrix4', () => {
     });
   });
 
+  describe('prototype.scaleByNumber()', () => {
+    test('scales this matrix by factor > 1.0', () => {
+      /* eslint-disable */
+      const matrix = Matrix4.of(
+         0.0,  1.0,  2.0,  3.0, // col 0
+         4.0,  5.0,  6.0,  7.0, // col 1
+         8.0,  9.0, 10.0, 11.0, // col 2
+        12.0, 13.0, 14.0, 15.0  // col 3
+      );
+      /* eslint-enable */
+
+      matrix.scaleByNumber(1.5);
+
+      /* eslint-disable */
+      expect(matrix).toEqual(Matrix4.of(
+         0.0,  1.5,  3.0,  3.0, // col 0
+         6.0,  7.5,  9.0,  7.0, // col 1
+        12.0, 13.5, 15.0, 11.0, // col 2
+        12.0, 13.0, 14.0, 15.0  // col 3
+      ));
+      /* eslint-enable */
+    });
+
+    test('scales this matrix by factor > 0.0 and < 1.0', () => {
+      /* eslint-disable */
+      const matrix = Matrix4.of(
+         0.0,  1.0,  2.0,  3.0, // col 0
+         4.0,  5.0,  6.0,  7.0, // col 1
+         8.0,  9.0, 10.0, 11.0, // col 2
+        12.0, 13.0, 14.0, 15.0  // col 3
+      );
+      /* eslint-enable */
+
+      matrix.scaleByNumber(0.5);
+
+      /* eslint-disable */
+      expect(matrix).toEqual(Matrix4.of(
+         0.0,  0.5,  1.0,  3.0, // col 0
+         2.0,  2.5,  3.0,  7.0, // col 1
+         4.0,  4.5,  5.0, 11.0, // col 2
+        12.0, 13.0, 14.0, 15.0  // col 3
+      ));
+      /* eslint-enable */
+    });
+
+    test('scales this matrix by factor < 0.0', () => {
+      /* eslint-disable */
+      const matrix = Matrix4.of(
+         0.0,  1.0,  2.0,  3.0, // col 0
+         4.0,  5.0,  6.0,  7.0, // col 1
+         8.0,  9.0, 10.0, 11.0, // col 2
+        12.0, 13.0, 14.0, 15.0  // col 3
+      );
+      /* eslint-enable */
+
+      matrix.scaleByNumber(-0.5);
+
+      /* eslint-disable */
+      expect(matrix).toEqual(Matrix4.of(
+        -0.0, -0.5, -1.0,  3.0, // col 0
+        -2.0, -2.5, -3.0,  7.0, // col 1
+        -4.0, -4.5, -5.0, 11.0, // col 2
+        12.0, 13.0, 14.0, 15.0  // col 3
+      ));
+      /* eslint-enable */
+    });
+  });
+
   describe('prototype.transpose()', () => {
     test('transposes this matrix', () => {
       /* eslint-disable */
