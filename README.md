@@ -6,3 +6,17 @@
 A 3D math library for Wowser.
 
 Licensed under the **MIT** license, see LICENSE for more information.
+
+## Compatibility
+
+Wowser Math should work with any browser that has native support for:
+
+* ES2015 Classes
+* Generators
+* `const` and `let` scoping
+* Typed Arrays
+
+Currently, the browser support targets are the latest 2 major versions of Chrome, Firefox, Safari,
+and Edge.
+
+Additionally, Node 8.7+ is supported.
