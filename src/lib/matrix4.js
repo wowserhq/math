@@ -193,6 +193,90 @@ class Matrix4 extends Float32Array {
   }
 
   /**
+   * Set this matrix to a view matrix matching the given eye, center, and up
+   * vectors.
+   *
+   * This implementation is compatible with GxuXformCreateLookAtSgCompat.
+   *
+   * @param {Vector3} eye Origin of the view
+   * @param {Vector3} center Target of the view
+   * @param {Vector3} up Vector pointing up
+   * @returns {Matrix4} Self
+   */
+  lookAt(eye, center, up) {
+    const ex = eye[0],    ey = eye[1],    ez = eye[2];
+    const cx = center[0], cy = center[1], cz = center[2];
+    const ux = up[0],     uy = up[1],     uz = up[2];
+
+    let m = 0.0;
+
+    // z = sub(center, eye)
+    let zx = cx - ex;
+    let zy = cy - ey;
+    let zz = cz - ez;
+
+    // Extremely close target
+    if (Math.abs(zx) < EPSILON && Math.abs(zy) < EPSILON && Math.abs(zz) < EPSILON) {
+      this.set(DEFAULT);
+      return this;
+    }
+
+    // z = normalize(z)
+    m = 1.0 / Math.sqrt(zx * zx + zy * zy + zz * zz);
+
+    zx *= m;
+    zy *= m;
+    zz *= m;
+
+    // x = cross(z, up)
+    let xx = zy * uz - zz * uy;
+    let xy = zz * ux - zx * uz;
+    let xz = zx * uy - zy * ux;
+
+    // x = normalize(x)
+    m = xx * xx + xy * xy + xz * xz;
+
+    if (m === 0.0) {
+      xx = 0.0;
+      xy = 0.0;
+      xz = 0.0;
+    } else {
+      m = 1.0 / Math.sqrt(m);
+
+      xx *= m;
+      xy *= m;
+      xz *= m;
+    }
+
+    // y = cross(x, z)
+    let yx = xy * zz - xz * zy;
+    let yy = xz * zx - xx * zz;
+    let yz = xx * zy - xy * zx;
+
+    this[0]  = xx;
+    this[1]  = yx;
+    this[2]  = zx;
+    this[3]  = 0.0;
+
+    this[4]  = xy;
+    this[5]  = yy;
+    this[6]  = zy;
+    this[7]  = 0.0;
+
+    this[8]  = xz;
+    this[9]  = yz;
+    this[10] = zz;
+    this[11] = 0.0;
+
+    this[12] = -(xx * ex + xy * ey + xz * ez);
+    this[13] = -(yx * ex + yy * ey + yz * ez);
+    this[14] = -(zx * ex + zy * ey + zz * ez);
+    this[15] = 1.0;
+
+    return this;
+  }
+
+  /**
    * Multiply this matrix by given matrix m.
    *
    * @param {Matrix4} m Matrix to multiply by
