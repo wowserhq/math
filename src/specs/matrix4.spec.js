@@ -466,6 +466,52 @@ describe('Matrix4', () => {
     });
   });
 
+  describe('prototype.rotateAroundX()', () => {
+    test('rotates matrix around x axis using sampled data a', () => {
+      /* eslint-disable */
+      const matrix = Matrix4.of(
+             1.18228618E-8,     -0.9914448857,    0.1305261999, 0.0, // col 0
+             1.0,                1.192488064E-8,  0.0,          0.0, // col 1
+            -1.556509366E-9,     0.1305261999,    0.9914448857, 0.0, // col 2
+        -10141.2207,         -1093.220703,       32.20798874,   1.0  // col 3
+      );
+      /* eslint-enable */
+
+      matrix.rotateAroundX(0.1658062786);
+
+      /* eslint-disable */
+      expect(matrix.approximates(Matrix4.of(
+             1.18228618E-8,   -0.9914448857,   0.1305261999, 0.0, // col 0
+             0.9862856269,     0.02154304832,  0.1636355966, 0.0, // col 1
+            -0.1650476009,     0.1287361085,   0.9778478146, 0.0, // col 2
+        -10141.2207,       -1093.220703,      32.20798874,   1.0  // col 3
+      ))).toBe(true);
+      /* eslint-enable */
+    });
+
+    test('rotates matrix around x axis using sampled data b', () => {
+      /* eslint-disable */
+      const matrix = Matrix4.of(
+            -0.9862856269,      -8.622382808E-8,  0.1650476009, 0.0, // col 0
+             8.742277657E-8,    -1.0,             0.0,          0.0, // col 1
+             0.1650476009,       1.442891939E-8,  0.9862856269, 0.0, // col 2
+        -10149.75195,        -1166.369141,       26.85122681,   1.0  // col 3
+      );
+      /* eslint-enable */
+
+      matrix.rotateAroundX(0.3228859007);
+
+      /* eslint-disable */
+      expect(matrix.approximates(Matrix4.of(
+            -0.9862856269,      -8.622382808E-8,  0.1650476009, 0.0, // col 0
+             0.05237045139,    -0.948323667,      0.3129529953, 0.0, // col 1
+             0.1565185189,      0.317304641,      0.9353179932, 0.0, // col 2
+        -10149.75195,       -1166.369141,        26.85122681,   1.0  // col 3
+      ))).toBe(true);
+      /* eslint-enable */
+    });
+  });
+
   describe('prototype.scaleByNumber()', () => {
     test('scales this matrix by factor > 1.0', () => {
       /* eslint-disable */

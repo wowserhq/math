@@ -392,6 +392,35 @@ class Matrix4 extends Float32Array {
   }
 
   /**
+   * Rotate this matrix around the X axis by the given angle.
+   *
+   * This implementation is compatible with C44Matrix::RotateAroundX(float).
+   *
+   * @param {Number} angle Rotation angle (in radians)
+   * @returns {Matrix4} Self
+   */
+  rotateAroundX(angle) {
+    const t4 = this[4], t5 = this[5], t6  = this[6],  t7  = this[7];
+    const t8 = this[8], t9 = this[9], t10 = this[10], t11 = this[11];
+
+    const cosAngle = Math.cos(angle);
+    const sinAngle = Math.sin(angle);
+    const negSinAngle = -sinAngle;
+
+    this[4]  = cosAngle * t4 + sinAngle * t8;
+    this[5]  = cosAngle * t5 + sinAngle * t9;
+    this[6]  = cosAngle * t6 + sinAngle * t10;
+    this[7]  = cosAngle * t7 + sinAngle * t11;
+
+    this[8]  = negSinAngle * t4 + cosAngle * t8;
+    this[9]  = negSinAngle * t5 + cosAngle * t9;
+    this[10] = negSinAngle * t6 + cosAngle * t10;
+    this[11] = negSinAngle * t7 + cosAngle * t11;
+
+    return this;
+  }
+
+  /**
    * Scale this matrix by the given factor.
    *
    * This implementation is compatible with C44Matrix::Scale(float).
