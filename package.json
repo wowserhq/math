@@ -1,6 +1,6 @@
 {
   "name": "wowser-math",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Math library for Wowser",
   "main": "dist/wowser-math.js",
   "scripts": {
