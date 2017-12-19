@@ -1,5 +1,6 @@
 # Wowser Math
 
+[![Version](https://img.shields.io/npm/v/wowser-math.svg?style=flat)](https://www.npmjs.org/package/wowser-math)
 [![Build Status](https://travis-ci.org/wowserhq/wowser-math.svg?branch=master)](https://travis-ci.org/wowserhq/wowser-math)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/7ef6d7ffe594af216f6b/test_coverage)](https://codeclimate.com/github/wowserhq/wowser-math/test_coverage)
 
