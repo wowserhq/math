@@ -92,7 +92,7 @@ class Matrix4 extends Float32Array {
    * rotation, and scale.
    *
    * @param {Vector3} p Position vector
-   * @param {Quat} r Rotation quaternion
+   * @param {Quaternion} r Rotation quaternion
    * @param {Vector3} s Scale vector
    * @returns {Matrix4} Self
    */

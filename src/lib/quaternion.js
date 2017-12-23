@@ -184,7 +184,7 @@ class Quaternion extends Float32Array {
    * Create a new quaternion with a variable number of arguments.
    *
    * @param {...*} args Arguments for new quaternion
-   * @returns {Quat} New quaternion
+   * @returns {Quaternion} New quaternion
    */
   static of(...args) {
     if (args.length === 0) {
