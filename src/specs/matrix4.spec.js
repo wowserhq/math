@@ -534,6 +534,80 @@ describe('Matrix4', () => {
     });
   });
 
+  describe('prototype.scaleByVector3()', () => {
+    test('scales this matrix by factor > 1.0', () => {
+      /* eslint-disable */
+      const matrix = Matrix4.of(
+         0.0,  1.0,  2.0,  3.0, // col 0
+         4.0,  5.0,  6.0,  7.0, // col 1
+         8.0,  9.0, 10.0, 11.0, // col 2
+        12.0, 13.0, 14.0, 15.0  // col 3
+      );
+      /* eslint-enable */
+
+      const vector = Vector3.of(1.5, 2.0, 3.0);
+
+      matrix.scaleByVector3(vector);
+
+      /* eslint-disable */
+      expect(matrix).toEqual(Matrix4.of(
+         0.0,  1.5,  3.0,  3.0, // col 0
+         8.0, 10.0, 12.0,  7.0, // col 1
+        24.0, 27.0, 30.0, 11.0, // col 2
+        12.0, 13.0, 14.0, 15.0  // col 3
+      ));
+      /* eslint-enable */
+    });
+
+    test('scales this matrix by factor > 0.0 and < 1.0', () => {
+      /* eslint-disable */
+      const matrix = Matrix4.of(
+         0.0,  1.0,  2.0,  3.0, // col 0
+         4.0,  5.0,  6.0,  7.0, // col 1
+         8.0,  9.0, 10.0, 11.0, // col 2
+        12.0, 13.0, 14.0, 15.0  // col 3
+      );
+      /* eslint-enable */
+
+      const vector = Vector3.of(0.1, 0.2, 0.3);
+
+      matrix.scaleByVector3(vector);
+
+      /* eslint-disable */
+      expect(matrix.approximates(Matrix4.of(
+         0.0,  0.1,  0.2,  3.0, // col 0
+         0.8,  1.0,  1.2,  7.0, // col 1
+         2.4,  2.7,  3.0, 11.0, // col 2
+        12.0, 13.0, 14.0, 15.0  // col 3
+      ))).toBe(true);
+      /* eslint-enable */
+    });
+
+    test('scales this matrix by factor < 0.0', () => {
+      /* eslint-disable */
+      const matrix = Matrix4.of(
+         0.0,  1.0,  2.0,  3.0, // col 0
+         4.0,  5.0,  6.0,  7.0, // col 1
+         8.0,  9.0, 10.0, 11.0, // col 2
+        12.0, 13.0, 14.0, 15.0  // col 3
+      );
+      /* eslint-enable */
+
+      const vector = Vector3.of(-0.1, -0.2, -0.3);
+
+      matrix.scaleByVector3(vector);
+
+      /* eslint-disable */
+      expect(matrix.approximates(Matrix4.of(
+        -0.0, -0.1, -0.2,  3.0, // col 0
+        -0.8, -1.0, -1.2,  7.0, // col 1
+        -2.4, -2.7, -3.0, 11.0, // col 2
+        12.0, 13.0, 14.0, 15.0  // col 3
+      ))).toBe(true);
+      /* eslint-enable */
+    });
+  });
+
   describe('prototype.transpose()', () => {
     test('transposes this matrix', () => {
       /* eslint-disable */
