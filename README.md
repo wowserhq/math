@@ -1,5 +1,6 @@
 # Wowser Math
 
+[![Join chat](https://img.shields.io/badge/gitter-join_chat-blue.svg?style=flat)](https://gitter.im/wowserhq/wowser)
 [![Version](https://img.shields.io/npm/v/wowser-math.svg?style=flat)](https://www.npmjs.org/package/wowser-math)
 [![Build Status](https://travis-ci.org/wowserhq/wowser-math.svg?branch=master)](https://travis-ci.org/wowserhq/wowser-math)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/7ef6d7ffe594af216f6b/test_coverage)](https://codeclimate.com/github/wowserhq/wowser-math/test_coverage)
