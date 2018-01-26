@@ -1,9 +1,9 @@
 {
-  "name": "wowser-math",
+  "name": "@wowserhq/math",
   "version": "0.1.0",
   "description": "Math library for Wowser",
   "author": "Wowser Contributors",
-  "repository": "github:wowserhq/wowser-math",
+  "repository": "github:wowserhq/math",
   "license": "MIT",
   "main": "dist/wowser-math.js",
   "scripts": {

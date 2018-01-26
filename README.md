@@ -1,9 +1,9 @@
 # Wowser Math
 
 [![Join chat](https://img.shields.io/badge/gitter-join_chat-blue.svg?style=flat)](https://gitter.im/wowserhq/wowser)
-[![Version](https://img.shields.io/npm/v/wowser-math.svg?style=flat)](https://www.npmjs.org/package/wowser-math)
-[![Build Status](https://travis-ci.org/wowserhq/wowser-math.svg?branch=master)](https://travis-ci.org/wowserhq/wowser-math)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/7ef6d7ffe594af216f6b/test_coverage)](https://codeclimate.com/github/wowserhq/wowser-math/test_coverage)
+[![Version](https://img.shields.io/npm/v/@wowserhq/math.svg?style=flat)](https://www.npmjs.org/package/@wowserhq/math)
+[![Build Status](https://travis-ci.org/wowserhq/math.svg?branch=master)](https://travis-ci.org/wowserhq/math)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/3be158e295dbdc73b17e/test_coverage)](https://codeclimate.com/github/wowserhq/math/test_coverage)
 
 A 3D math library for Wowser.
 
@@ -11,16 +11,16 @@ Licensed under the **MIT** license, see LICENSE for more information.
 
 ## Usage
 
-To install `wowser-math`:
+To install Wowser Math:
 
 ```sh
-npm install wowser-math
+npm install @wowserhq/math
 ```
 
-To use `wowser-math` in an ES2015 module environment:
+To use Wowser Math in an ES2015 module environment:
 
 ```js
-import { Matrix4 } from 'wowser-math';
+import { Matrix4 } from '@wowserhq/math';
 
 const matrix = new Matrix4();
 
@@ -29,9 +29,9 @@ matrix.scaleByNumber(4.0);
 
 ## Documentation
 
-`wowser-math` ships a complete set of jsdoc documentation.
+Wowser Math ships a complete set of jsdoc documentation.
 
-To build a local copy of the documentation, check out the `wowser-math` repo and run:
+To build a local copy of the documentation, check out the repo and run:
 
 ```sh
 npm run doc
