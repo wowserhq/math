@@ -4,7 +4,12 @@
       "presets": [
         ["@babel/preset-env", {
           "targets": {
-            "node": "8.7"
+            "node": "8.11",
+            "browsers": [
+              "last 2 versions",
+              "not ie 1-11",
+              "not android > 0"
+            ]
           }
         }]
       ]
@@ -14,7 +19,7 @@
       "presets": [
         ["@babel/preset-env", {
           "targets": {
-            "node": "8.7",
+            "node": "8.11",
             "browsers": [
               "last 2 versions",
               "not ie 1-11",
@@ -30,7 +35,7 @@
       "presets": [
         ["@babel/preset-env", {
           "targets": {
-            "node": "8.7"
+            "node": "8.11"
           }
         }]
       ]
