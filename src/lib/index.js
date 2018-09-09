@@ -10,5 +10,5 @@ export {
   Matrix4,
   Plane,
   Quaternion,
-  Vector3
+  Vector3,
 };

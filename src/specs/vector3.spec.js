@@ -314,7 +314,7 @@ describe('Vector3', () => {
       const arr = new Float32Array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0]);
       const indices = [];
 
-      Vector3.forEach(arr, function(v, i) {
+      Vector3.forEach(arr, function (v, i) {
         indices.push(i);
       });
 
@@ -324,7 +324,7 @@ describe('Vector3', () => {
     test('permits manipulation of array', () => {
       const arr = new Float32Array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0]);
 
-      Vector3.forEach(arr, function(v) {
+      Vector3.forEach(arr, function (v) {
         v[0] = 0.0;
       });
 
@@ -335,7 +335,7 @@ describe('Vector3', () => {
   describe('keys()', () => {
     test('returns vector iterator', () => {
       const arr = new Float32Array([1.0, 2.0, 3.0]);
-      const iterator = Vector3.keys();
+      const iterator = Vector3.keys(arr);
 
       expect(iterator.next).toBeInstanceOf(Function);
     });
@@ -369,7 +369,7 @@ describe('Vector3', () => {
   describe('values()', () => {
     test('returns vector iterator', () => {
       const arr = new Float32Array([1.0, 2.0, 3.0]);
-      const iterator = Vector3.values();
+      const iterator = Vector3.values(arr);
 
       expect(iterator.next).toBeInstanceOf(Function);
     });

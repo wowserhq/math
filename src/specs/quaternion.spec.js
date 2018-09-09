@@ -159,7 +159,7 @@ describe('Quaternion', () => {
       const arr = new Float32Array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0]);
       const indices = [];
 
-      Quaternion.forEach(arr, function(q, i) {
+      Quaternion.forEach(arr, function (q, i) {
         indices.push(i);
       });
 
@@ -169,7 +169,7 @@ describe('Quaternion', () => {
     test('permits manipulation of array', () => {
       const arr = new Float32Array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0]);
 
-      Quaternion.forEach(arr, function(q) {
+      Quaternion.forEach(arr, function (q) {
         q[0] = 0.0;
       });
 
@@ -229,7 +229,7 @@ describe('Quaternion', () => {
 
       expect(quaternions).toEqual([
         new Quaternion([1.0, 2.0, 3.0, 4.0]),
-        new Quaternion([5.0, 6.0, 7.0, 8.0])
+        new Quaternion([5.0, 6.0, 7.0, 8.0]),
       ]);
     });
 

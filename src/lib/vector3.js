@@ -13,7 +13,7 @@ const AXIS = {
   /** Y axis */
   Y: 1,
   /** Z axis */
-  Z: 2
+  Z: 2,
 };
 
 Object.freeze(AXIS);

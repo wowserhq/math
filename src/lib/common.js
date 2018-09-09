@@ -4,5 +4,5 @@ const EPSILON = 0.00001;
 
 export {
   DEG2RAD,
-  EPSILON
+  EPSILON,
 };

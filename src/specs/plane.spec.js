@@ -67,7 +67,7 @@ describe('Plane', () => {
       const arr = new Float32Array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0]);
       const indices = [];
 
-      Plane.forEach(arr, function(p, i) {
+      Plane.forEach(arr, function (p, i) {
         indices.push(i);
       });
 
@@ -77,7 +77,7 @@ describe('Plane', () => {
     test('permits manipulation of array', () => {
       const arr = new Float32Array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0]);
 
-      Plane.forEach(arr, function(p) {
+      Plane.forEach(arr, function (p) {
         p[0] = 0.0;
       });
 
@@ -137,7 +137,7 @@ describe('Plane', () => {
 
       expect(planes).toEqual([
         new Plane([1.0, 2.0, 3.0, 4.0]),
-        new Plane([5.0, 6.0, 7.0, 8.0])
+        new Plane([5.0, 6.0, 7.0, 8.0]),
       ]);
     });
 

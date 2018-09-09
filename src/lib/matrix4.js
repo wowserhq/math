@@ -1,3 +1,5 @@
+/* eslint-disable prefer-const */
+
 import { EPSILON } from './common';
 
 /**
@@ -11,7 +13,7 @@ const DEFAULT = [
   1.0, 0.0, 0.0, 0.0, // col 0
   0.0, 1.0, 0.0, 0.0, // col 1
   0.0, 0.0, 1.0, 0.0, // col 2
-  0.0, 0.0, 0.0, 1.0  // col 3
+  0.0, 0.0, 0.0, 1.0, // col 3
 ];
 
 Object.freeze(DEFAULT);
