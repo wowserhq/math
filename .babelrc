@@ -6,7 +6,7 @@
         "browsers": [
           "last 2 versions",
           "not ie 1-11",
-          "not android 1-62"
+          "not android > 0"
         ]
       }
     }]
