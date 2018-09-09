@@ -5,10 +5,13 @@
   "author": "Wowser Contributors",
   "repository": "github:wowserhq/math",
   "license": "MIT",
-  "main": "dist/wowser-math.js",
+  "main": "dist/index",
   "scripts": {
-    "lint": "eslint --ignore-path .gitignore .",
-    "build": "npm run test && webpack",
+    "lint": "eslint --ignore-path .gitignore --ext=mjs,js .",
+    "clean": "rimraf ./dist",
+    "build": "npm run clean && npm run test && npm run build:cjs && npm run build:esm",
+    "build:cjs": "BABEL_ENV=cjs babel src/lib/ --out-dir dist/",
+    "build:esm": "BABEL_ENV=esm babel src/lib/ --out-dir dist/ --keep-file-extension",
     "test": "npm run lint && jest --config .jestrc.json",
     "precommit": "npm run lint",
     "prepublishOnly": "npm run build",
@@ -23,18 +26,19 @@
     "wowser"
   ],
   "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
     "@wowserhq/eslint-config": "^0.3.1",
-    "babel-core": "^6.26.3",
-    "babel-jest": "^21.0.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.7.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.4.2",
     "eslint": "^4.13.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^21.15.0",
     "husky": "^0.14.3",
-    "jest": "^21.0.0",
+    "jest": "^23.5.0",
     "jsdoc": "^3.5.5",
     "marked": "^0.3.9",
-    "webpack": "^3.10.0"
+    "rimraf": "^2.6.2"
   }
 }
