@@ -279,44 +279,48 @@ class Matrix4 extends Float32Array {
   }
 
   /**
-   * Multiply this matrix by given matrix m.
+   * Multiply this matrix as left-hand-side against given matrix r as
+   * right-hand-side.
    *
-   * @param {Matrix4} m Matrix to multiply by
+   * This implementation is compatible with
+   * C44Matrix::operator*=(C44Matrix const&).
+   *
+   * @param {Matrix4} r Right-hand-side matrix
    * @returns {Matrix4} Self
    */
-  multiply(m) {
-    const t0  = this[0],  t1  = this[1],  t2  = this[2],  t3  = this[3];
-    const t4  = this[4],  t5  = this[5],  t6  = this[6],  t7  = this[7];
-    const t8  = this[8],  t9  = this[9],  t10 = this[10], t11 = this[11];
-    const t12 = this[12], t13 = this[13], t14 = this[14], t15 = this[15];
+  multiply(r) {
+    const r0  = r[0],  r1  = r[1],  r2  = r[2],  r3  = r[3];
+    const r4  = r[4],  r5  = r[5],  r6  = r[6],  r7  = r[7];
+    const r8  = r[8],  r9  = r[9],  r10 = r[10], r11 = r[11];
+    const r12 = r[12], r13 = r[13], r14 = r[14], r15 = r[15];
 
-    let m0 = m[0], m1 = m[1], m2 = m[2], m3 = m[3];
+    let l0 = this[0], l1 = this[1], l2 = this[2], l3 = this[3];
 
-    this[0]  = m0 * t0 + m1 * t4 + m2 * t8  + m3 * t12;
-    this[1]  = m0 * t1 + m1 * t5 + m2 * t9  + m3 * t13;
-    this[2]  = m0 * t2 + m1 * t6 + m2 * t10 + m3 * t14;
-    this[3]  = m0 * t3 + m1 * t7 + m2 * t11 + m3 * t15;
+    this[0]  = l0 * r0 + l1 * r4 + l2 * r8  + l3 * r12;
+    this[1]  = l0 * r1 + l1 * r5 + l2 * r9  + l3 * r13;
+    this[2]  = l0 * r2 + l1 * r6 + l2 * r10 + l3 * r14;
+    this[3]  = l0 * r3 + l1 * r7 + l2 * r11 + l3 * r15;
 
-    m0 = m[4], m1 = m[5], m2 = m[6], m3 = m[7];
+    l0 = this[4], l1 = this[5], l2 = this[6], l3 = this[7];
 
-    this[4]  = m0 * t0 + m1 * t4 + m2 * t8  + m3 * t12;
-    this[5]  = m0 * t1 + m1 * t5 + m2 * t9  + m3 * t13;
-    this[6]  = m0 * t2 + m1 * t6 + m2 * t10 + m3 * t14;
-    this[7]  = m0 * t3 + m1 * t7 + m2 * t11 + m3 * t15;
+    this[4]  = l0 * r0 + l1 * r4 + l2 * r8  + l3 * r12;
+    this[5]  = l0 * r1 + l1 * r5 + l2 * r9  + l3 * r13;
+    this[6]  = l0 * r2 + l1 * r6 + l2 * r10 + l3 * r14;
+    this[7]  = l0 * r3 + l1 * r7 + l2 * r11 + l3 * r15;
 
-    m0 = m[8], m1 = m[9], m2 = m[10], m3 = m[11];
+    l0 = this[8], l1 = this[9], l2 = this[10], l3 = this[11];
 
-    this[8]  = m0 * t0 + m1 * t4 + m2 * t8  + m3 * t12;
-    this[9]  = m0 * t1 + m1 * t5 + m2 * t9  + m3 * t13;
-    this[10] = m0 * t2 + m1 * t6 + m2 * t10 + m3 * t14;
-    this[11] = m0 * t3 + m1 * t7 + m2 * t11 + m3 * t15;
+    this[8]  = l0 * r0 + l1 * r4 + l2 * r8  + l3 * r12;
+    this[9]  = l0 * r1 + l1 * r5 + l2 * r9  + l3 * r13;
+    this[10] = l0 * r2 + l1 * r6 + l2 * r10 + l3 * r14;
+    this[11] = l0 * r3 + l1 * r7 + l2 * r11 + l3 * r15;
 
-    m0 = m[12], m1 = m[13], m2 = m[14], m3 = m[15];
+    l0 = this[12], l1 = this[13], l2 = this[14], l3 = this[15];
 
-    this[12] = m0 * t0 + m1 * t4 + m2 * t8  + m3 * t12;
-    this[13] = m0 * t1 + m1 * t5 + m2 * t9  + m3 * t13;
-    this[14] = m0 * t2 + m1 * t6 + m2 * t10 + m3 * t14;
-    this[15] = m0 * t3 + m1 * t7 + m2 * t11 + m3 * t15;
+    this[12] = l0 * r0 + l1 * r4 + l2 * r8  + l3 * r12;
+    this[13] = l0 * r1 + l1 * r5 + l2 * r9  + l3 * r13;
+    this[14] = l0 * r2 + l1 * r6 + l2 * r10 + l3 * r14;
+    this[15] = l0 * r3 + l1 * r7 + l2 * r11 + l3 * r15;
 
     return this;
   }
