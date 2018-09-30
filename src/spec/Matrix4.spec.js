@@ -654,6 +654,30 @@ describe('Matrix4', () => {
     });
   });
 
+  describe('prototype.translate()', () => {
+    test('translates this matrix', () => {
+      /* eslint-disable */
+      const matrix = Matrix4.of(
+         1.0,  0.0,  0.0, 0.0, // col 0
+         0.0,  1.0,  0.0, 0.0, // col 1
+         0.0,  0.0,  1.0, 0.0, // col 2
+        12.0, 13.0, 14.0, 1.0  // col 3
+      );
+      /* eslint-enable */
+
+      matrix.translate(Vector3.of(9.0, 10.0, 11.0));
+
+      /* eslint-disable */
+      expect(matrix).toEqual(Matrix4.of(
+         1.0,  0.0,  0.0, 0.0, // col 0
+         0.0,  1.0,  0.0, 0.0, // col 1
+         0.0,  0.0,  1.0, 0.0, // col 2
+        21.0, 23.0, 25.0, 1.0  // col 3
+      ));
+      /* eslint-enable */
+    });
+  });
+
   describe('prototype.transpose()', () => {
     test('transposes this matrix', () => {
       /* eslint-disable */
