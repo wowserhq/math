@@ -80,14 +80,14 @@ describe('Matrix4', () => {
 
       const matrix = new Matrix4().compose(position, rotation, scale);
 
-      /* eslint-disable */
+      /* eslint-disable indent */
       expect(matrix.approximates(Matrix4.of(
          0.431999,  0.881999, 0.270000, 0.0, // col 0
         -0.815999,  0.384000, 0.080000, 0.0, // col 1
         -0.070000, -0.209999, 0.671999, 0.0, // col 2
          1.0,       2.0,      3.0,      1.0  // col 3
       ))).toBe(true);
-      /* eslint-enable */
+      /* eslint-enable indent */
     });
   });
 
@@ -102,14 +102,14 @@ describe('Matrix4', () => {
 
       matrix.invert();
 
-      /* eslint-disable */
+      /* eslint-disable indent */
       expect(matrix).toEqual(Matrix4.of(
          1.0,  0.0,  0.0, 0.0, // col 0
          0.0,  1.0,  0.0, 0.0, // col 1
          0.0,  0.0,  1.0, 0.0, // col 2
         -1.0, -2.0, -3.0, 1.0  // col 3
       ));
-      /* eslint-enable */
+      /* eslint-enable indent */
     });
 
     test('inverts identity matrix', () => {
@@ -157,14 +157,14 @@ describe('Matrix4', () => {
 
       const matrix = new Matrix4().lookAt(eye, center, up);
 
-      /* eslint-disable */
+      /* eslint-disable indent */
       expect(matrix.approximates(Matrix4.of(
          0.7071068287, -0.4082481861,  0.5773502588, 0.0, // col 0
         -0.7071067095, -0.4082484245,  0.5773502588, 0.0, // col 1
          0.0,           0.8164966106,  0.5773502588, 0.0, // col 2
          0.0,           0.0,          -1.732050776,  1.0  // col 3
       ))).toBe(true);
-      /* eslint-enable */
+      /* eslint-enable indent */
     });
 
     test('creates view matrix with positive offset from eye to center, and y up vector', () => {
@@ -174,14 +174,14 @@ describe('Matrix4', () => {
 
       const matrix = new Matrix4().lookAt(eye, center, up);
 
-      /* eslint-disable */
+      /* eslint-disable indent */
       expect(matrix.approximates(Matrix4.of(
         -0.7071067691, -0.4082483053,  0.5773502588, 0.0, // col 0
          0.0,           0.8164966106,  0.5773502588, 0.0, // col 1
          0.7071067691, -0.4082483053,  0.5773502588, 0.0, // col 2
          0.0,           0.0,          -1.732050776,  1.0  // col 3
       ))).toBe(true);
-      /* eslint-enable */
+      /* eslint-enable indent */
     });
 
     test('creates view matrix with negative offset from eye to center, and z up vector', () => {
@@ -191,14 +191,14 @@ describe('Matrix4', () => {
 
       const matrix = new Matrix4().lookAt(eye, center, up);
 
-      /* eslint-disable */
+      /* eslint-disable indent */
       expect(matrix.approximates(Matrix4.of(
         -0.5087293386, -0.3659469187, -0.7792800069, 0.0, // col 0
          0.8609265089, -0.2162415236, -0.4604836404, 0.0, // col 1
          0.0,           0.9051643014, -0.4250618219, 0.0, // col 2
         -1.213124156,  -1.917062998,   2.975432873,  1.0  // col 3
       ))).toBe(true);
-      /* eslint-enable */
+      /* eslint-enable indent */
     });
 
     test('creates view matrix from identical eye and center', () => {
@@ -253,14 +253,14 @@ describe('Matrix4', () => {
 
       const matrix = new Matrix4().lookAt(eye, center, up);
 
-      /* eslint-disable */
+      /* eslint-disable indent */
       expect(matrix.approximates(Matrix4.of(
         -0.010868, 0.097349, -0.995190, 0.0, // col 0
          0.999940, 0.001058, -0.010817, 0.0, // col 1
          0.0,      0.995249,  0.097355, 0.0, // col 2
          0.0,      0.0,       0.0,      1.0  // col 3
       ))).toBe(true);
-      /* eslint-enable */
+      /* eslint-enable indent */
     });
 
     test('creates view matrix from sampled data c', () => {
@@ -270,14 +270,14 @@ describe('Matrix4', () => {
 
       const matrix = new Matrix4().lookAt(eye, center, up);
 
-      /* eslint-disable */
+      /* eslint-disable indent */
       expect(matrix.approximates(Matrix4.of(
          0.3496741652, 0.3735766112,  0.8591673374, 0.0, // col 0
         -0.9368713498, 0.1394322663,  0.3206722140, 0.0, // col 1
          0.0,          0.9170600771, -0.3987491130, 0.0, // col 2
          0.0,          0.0,           0.0,          1.0  // col 3
       ))).toBe(true);
-      /* eslint-enable */
+      /* eslint-enable indent */
     });
   });
 
@@ -468,226 +468,226 @@ describe('Matrix4', () => {
 
   describe('prototype.rotateAroundX()', () => {
     test('rotates matrix around x axis using sampled data a', () => {
-      /* eslint-disable */
+      /* eslint-disable indent */
       const matrix = Matrix4.of(
              1.18228618E-8,     -0.9914448857,    0.1305261999, 0.0, // col 0
              1.0,                1.192488064E-8,  0.0,          0.0, // col 1
             -1.556509366E-9,     0.1305261999,    0.9914448857, 0.0, // col 2
         -10141.2207,         -1093.220703,       32.20798874,   1.0  // col 3
       );
-      /* eslint-enable */
+      /* eslint-enable indent */
 
       matrix.rotateAroundX(0.1658062786);
 
-      /* eslint-disable */
+      /* eslint-disable indent */
       expect(matrix.approximates(Matrix4.of(
              1.18228618E-8,   -0.9914448857,   0.1305261999, 0.0, // col 0
              0.9862856269,     0.02154304832,  0.1636355966, 0.0, // col 1
             -0.1650476009,     0.1287361085,   0.9778478146, 0.0, // col 2
         -10141.2207,       -1093.220703,      32.20798874,   1.0  // col 3
       ))).toBe(true);
-      /* eslint-enable */
+      /* eslint-enable indent */
     });
 
     test('rotates matrix around x axis using sampled data b', () => {
-      /* eslint-disable */
+      /* eslint-disable indent */
       const matrix = Matrix4.of(
             -0.9862856269,      -8.622382808E-8,  0.1650476009, 0.0, // col 0
              8.742277657E-8,    -1.0,             0.0,          0.0, // col 1
              0.1650476009,       1.442891939E-8,  0.9862856269, 0.0, // col 2
         -10149.75195,        -1166.369141,       26.85122681,   1.0  // col 3
       );
-      /* eslint-enable */
+      /* eslint-enable indent */
 
       matrix.rotateAroundX(0.3228859007);
 
-      /* eslint-disable */
+      /* eslint-disable indent */
       expect(matrix.approximates(Matrix4.of(
             -0.9862856269,      -8.622382808E-8,  0.1650476009, 0.0, // col 0
              0.05237045139,    -0.948323667,      0.3129529953, 0.0, // col 1
              0.1565185189,      0.317304641,      0.9353179932, 0.0, // col 2
         -10149.75195,       -1166.369141,        26.85122681,   1.0  // col 3
       ))).toBe(true);
-      /* eslint-enable */
+      /* eslint-enable indent */
     });
   });
 
   describe('prototype.scaleByNumber()', () => {
     test('scales this matrix by factor > 1.0', () => {
-      /* eslint-disable */
+      /* eslint-disable indent */
       const matrix = Matrix4.of(
          0.0,  1.0,  2.0,  3.0, // col 0
          4.0,  5.0,  6.0,  7.0, // col 1
          8.0,  9.0, 10.0, 11.0, // col 2
         12.0, 13.0, 14.0, 15.0  // col 3
       );
-      /* eslint-enable */
+      /* eslint-enable indent */
 
       matrix.scaleByNumber(1.5);
 
-      /* eslint-disable */
+      /* eslint-disable indent */
       expect(matrix).toEqual(Matrix4.of(
          0.0,  1.5,  3.0,  3.0, // col 0
          6.0,  7.5,  9.0,  7.0, // col 1
         12.0, 13.5, 15.0, 11.0, // col 2
         12.0, 13.0, 14.0, 15.0  // col 3
       ));
-      /* eslint-enable */
+      /* eslint-enable indent */
     });
 
     test('scales this matrix by factor > 0.0 and < 1.0', () => {
-      /* eslint-disable */
+      /* eslint-disable indent */
       const matrix = Matrix4.of(
          0.0,  1.0,  2.0,  3.0, // col 0
          4.0,  5.0,  6.0,  7.0, // col 1
          8.0,  9.0, 10.0, 11.0, // col 2
         12.0, 13.0, 14.0, 15.0  // col 3
       );
-      /* eslint-enable */
+      /* eslint-enable indent */
 
       matrix.scaleByNumber(0.5);
 
-      /* eslint-disable */
+      /* eslint-disable indent */
       expect(matrix).toEqual(Matrix4.of(
          0.0,  0.5,  1.0,  3.0, // col 0
          2.0,  2.5,  3.0,  7.0, // col 1
          4.0,  4.5,  5.0, 11.0, // col 2
         12.0, 13.0, 14.0, 15.0  // col 3
       ));
-      /* eslint-enable */
+      /* eslint-enable indent */
     });
 
     test('scales this matrix by factor < 0.0', () => {
-      /* eslint-disable */
+      /* eslint-disable indent */
       const matrix = Matrix4.of(
          0.0,  1.0,  2.0,  3.0, // col 0
          4.0,  5.0,  6.0,  7.0, // col 1
          8.0,  9.0, 10.0, 11.0, // col 2
         12.0, 13.0, 14.0, 15.0  // col 3
       );
-      /* eslint-enable */
+      /* eslint-enable indent */
 
       matrix.scaleByNumber(-0.5);
 
-      /* eslint-disable */
+      /* eslint-disable indent */
       expect(matrix).toEqual(Matrix4.of(
         -0.0, -0.5, -1.0,  3.0, // col 0
         -2.0, -2.5, -3.0,  7.0, // col 1
         -4.0, -4.5, -5.0, 11.0, // col 2
         12.0, 13.0, 14.0, 15.0  // col 3
       ));
-      /* eslint-enable */
+      /* eslint-enable indent */
     });
   });
 
   describe('prototype.scaleByVector3()', () => {
     test('scales this matrix by factor > 1.0', () => {
-      /* eslint-disable */
+      /* eslint-disable indent */
       const matrix = Matrix4.of(
          0.0,  1.0,  2.0,  3.0, // col 0
          4.0,  5.0,  6.0,  7.0, // col 1
          8.0,  9.0, 10.0, 11.0, // col 2
         12.0, 13.0, 14.0, 15.0  // col 3
       );
-      /* eslint-enable */
+      /* eslint-enable indent */
 
       const vector = Vector3.of(1.5, 2.0, 3.0);
 
       matrix.scaleByVector3(vector);
 
-      /* eslint-disable */
+      /* eslint-disable indent */
       expect(matrix).toEqual(Matrix4.of(
          0.0,  1.5,  3.0,  3.0, // col 0
          8.0, 10.0, 12.0,  7.0, // col 1
         24.0, 27.0, 30.0, 11.0, // col 2
         12.0, 13.0, 14.0, 15.0  // col 3
       ));
-      /* eslint-enable */
+      /* eslint-enable indent */
     });
 
     test('scales this matrix by factor > 0.0 and < 1.0', () => {
-      /* eslint-disable */
+      /* eslint-disable indent */
       const matrix = Matrix4.of(
          0.0,  1.0,  2.0,  3.0, // col 0
          4.0,  5.0,  6.0,  7.0, // col 1
          8.0,  9.0, 10.0, 11.0, // col 2
         12.0, 13.0, 14.0, 15.0  // col 3
       );
-      /* eslint-enable */
+      /* eslint-enable indent */
 
       const vector = Vector3.of(0.1, 0.2, 0.3);
 
       matrix.scaleByVector3(vector);
 
-      /* eslint-disable */
+      /* eslint-disable indent */
       expect(matrix.approximates(Matrix4.of(
          0.0,  0.1,  0.2,  3.0, // col 0
          0.8,  1.0,  1.2,  7.0, // col 1
          2.4,  2.7,  3.0, 11.0, // col 2
         12.0, 13.0, 14.0, 15.0  // col 3
       ))).toBe(true);
-      /* eslint-enable */
+      /* eslint-enable indent */
     });
 
     test('scales this matrix by factor < 0.0', () => {
-      /* eslint-disable */
+      /* eslint-disable indent */
       const matrix = Matrix4.of(
          0.0,  1.0,  2.0,  3.0, // col 0
          4.0,  5.0,  6.0,  7.0, // col 1
          8.0,  9.0, 10.0, 11.0, // col 2
         12.0, 13.0, 14.0, 15.0  // col 3
       );
-      /* eslint-enable */
+      /* eslint-enable indent */
 
       const vector = Vector3.of(-0.1, -0.2, -0.3);
 
       matrix.scaleByVector3(vector);
 
-      /* eslint-disable */
+      /* eslint-disable indent */
       expect(matrix.approximates(Matrix4.of(
         -0.0, -0.1, -0.2,  3.0, // col 0
         -0.8, -1.0, -1.2,  7.0, // col 1
         -2.4, -2.7, -3.0, 11.0, // col 2
         12.0, 13.0, 14.0, 15.0  // col 3
       ))).toBe(true);
-      /* eslint-enable */
+      /* eslint-enable indent */
     });
   });
 
   describe('prototype.translate()', () => {
     test('translates this matrix', () => {
-      /* eslint-disable */
+      /* eslint-disable indent */
       const matrix = Matrix4.of(
          1.0,  0.0,  0.0, 0.0, // col 0
          0.0,  1.0,  0.0, 0.0, // col 1
          0.0,  0.0,  1.0, 0.0, // col 2
         12.0, 13.0, 14.0, 1.0  // col 3
       );
-      /* eslint-enable */
+      /* eslint-enable indent */
 
       matrix.translate(Vector3.of(9.0, 10.0, 11.0));
 
-      /* eslint-disable */
+      /* eslint-disable indent */
       expect(matrix).toEqual(Matrix4.of(
          1.0,  0.0,  0.0, 0.0, // col 0
          0.0,  1.0,  0.0, 0.0, // col 1
          0.0,  0.0,  1.0, 0.0, // col 2
         21.0, 23.0, 25.0, 1.0  // col 3
       ));
-      /* eslint-enable */
+      /* eslint-enable indent */
     });
   });
 
   describe('prototype.transpose()', () => {
     test('transposes this matrix', () => {
-      /* eslint-disable */
+      /* eslint-disable indent */
       const matrix = Matrix4.of(
          0.0,  1.0,  2.0,  3.0, // col 0
          4.0,  5.0,  6.0,  7.0, // col 1
          8.0,  9.0, 10.0, 11.0, // col 2
         12.0, 13.0, 14.0, 15.0  // col 3
       );
-      /* eslint-enable */
+      /* eslint-enable indent */
 
       matrix.transpose();
 
