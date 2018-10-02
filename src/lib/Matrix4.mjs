@@ -144,6 +144,17 @@ class Matrix4 extends Float32Array {
   }
 
   /**
+   * Set matrix to identity.
+   *
+   * @returns {Matrix4} Self
+   */
+  identity() {
+    this.set(DEFAULT);
+
+    return this;
+  }
+
+  /**
    * Invert this matrix.
    *
    * @returns {Matrix4} Self

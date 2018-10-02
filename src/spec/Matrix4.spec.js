@@ -91,6 +91,26 @@ describe('Matrix4', () => {
     });
   });
 
+  describe('prototype.identity()', () => {
+    test('sets this matrix to identity', () => {
+      const matrix = Matrix4.of(
+        0.0, 2.0, 0.0, 2.0, // col 0
+        0.0, 2.0, 0.0, 2.0, // col 1
+        0.0, 2.0, 0.0, 2.0, // col 2
+        0.0, 2.0, 0.0, 2.0  // col 3
+      );
+
+      matrix.identity();
+
+      expect(matrix).toEqual(Matrix4.of(
+        1.0, 0.0, 0.0, 0.0, // col 0
+        0.0, 1.0, 0.0, 0.0, // col 1
+        0.0, 0.0, 1.0, 0.0, // col 2
+        0.0, 0.0, 0.0, 1.0  // col 3
+      ));
+    });
+  });
+
   describe('prototype.invert()', () => {
     test('inverts this matrix', () => {
       const matrix = Matrix4.of(
