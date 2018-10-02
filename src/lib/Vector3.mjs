@@ -236,6 +236,22 @@ class Vector3 extends Float32Array {
   }
 
   /**
+   * Set the elements of this vector to the given values.
+   *
+   * @param {Number} x X component
+   * @param {Number} y Y component
+   * @param {Number} z Z component
+   * @returns {Vector3} Self
+   */
+  setElements(x, y, z) {
+    this[0] = x;
+    this[1] = y;
+    this[2] = z;
+
+    return this;
+  }
+
+  /**
    * Subtract given vector v from this vector.
    *
    * @param {Vector3} v Vector to subtract

@@ -277,6 +277,16 @@ describe('Vector3', () => {
     });
   });
 
+  describe('prototype.setElements()', () => {
+    test('sets elements in this vector', () => {
+      const vector = Vector3.of(7.0, 8.0, 9.0);
+
+      vector.setElements(1.0, 2.0, 3.0);
+
+      expect(vector).toEqual(Vector3.of(1.0, 2.0, 3.0));
+    });
+  });
+
   describe('prototype.sub()', () => {
     test('returns expected result when subtracting positive vector', () => {
       const vector1 = Vector3.of(7.0, 8.0, 9.0);
