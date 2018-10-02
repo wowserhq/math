@@ -674,6 +674,30 @@ describe('Matrix4', () => {
     });
   });
 
+  describe('prototype.setElements()', () => {
+    test('sets elements in this matrix', () => {
+      const matrix = new Matrix4();
+
+      /* eslint-disable indent */
+      matrix.setElements(
+         0.0,  1.0,  2.0,  3.0, // col 0
+         4.0,  5.0,  6.0,  7.0, // col 1
+         8.0,  9.0, 10.0, 11.0, // col 2
+        12.0, 13.0, 14.0, 15.0  // col 3
+      );
+      /* eslint-enable indent */
+
+      /* eslint-disable indent */
+      expect(matrix).toEqual(Matrix4.of(
+         0.0,  1.0,  2.0,  3.0, // col 0
+         4.0,  5.0,  6.0,  7.0, // col 1
+         8.0,  9.0, 10.0, 11.0, // col 2
+        12.0, 13.0, 14.0, 15.0  // col 3
+      ));
+      /* eslint-enable indent */
+    });
+  });
+
   describe('prototype.translate()', () => {
     test('translates this matrix', () => {
       /* eslint-disable indent */

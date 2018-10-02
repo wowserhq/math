@@ -488,6 +488,55 @@ class Matrix4 extends Float32Array {
   }
 
   /**
+   * Set the elements of this matrix to the given values.
+   *
+   * @param {Number} a0 Element 0
+   * @param {Number} a1 Element 1
+   * @param {Number} a2 Element 2
+   * @param {Number} a3 Element 3
+   * @param {Number} b0 Element 4
+   * @param {Number} b1 Element 5
+   * @param {Number} b2 Element 6
+   * @param {Number} b3 Element 7
+   * @param {Number} c0 Element 8
+   * @param {Number} c1 Element 9
+   * @param {Number} c2 Element 10
+   * @param {Number} c3 Element 11
+   * @param {Number} d0 Element 12
+   * @param {Number} d1 Element 13
+   * @param {Number} d2 Element 14
+   * @param {Number} d3 Element 15
+   * @returns {Matrix4} Self
+   */
+  setElements(a0, a1, a2, a3, b0, b1, b2, b3, c0, c1, c2, c3, d0, d1, d2, d3) {
+    // col 0
+    this[0]  = a0;
+    this[1]  = a1;
+    this[2]  = a2;
+    this[3]  = a3;
+
+    // col 1
+    this[4]  = b0;
+    this[5]  = b1;
+    this[6]  = b2;
+    this[7]  = b3;
+
+    // col 2
+    this[8]  = c0;
+    this[9]  = c1;
+    this[10] = c2;
+    this[11] = c3;
+
+    // col 3
+    this[12] = d0;
+    this[13] = d1;
+    this[14] = d2;
+    this[15] = d3;
+
+    return this;
+  }
+
+  /**
    * Translate this matrix by the given vector.
    *
    * @param {Vector3} move Translation vector
