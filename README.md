@@ -3,7 +3,7 @@
 [![Join Community](https://img.shields.io/badge/discord-join_community-blue.svg?style=flat)](https://discord.gg/DeVVKVg)
 [![Version](https://img.shields.io/npm/v/@wowserhq/math.svg?style=flat)](https://www.npmjs.org/package/@wowserhq/math)
 [![CI](https://github.com/wowserhq/math/workflows/CI/badge.svg)](https://github.com/wowserhq/math/actions?query=workflow%3ACI)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/3be158e295dbdc73b17e/test_coverage)](https://codeclimate.com/github/wowserhq/math/test_coverage)
+[![Test Coverage](https://codecov.io/gh/wowserhq/math/branch/master/graph/badge.svg)](https://codecov.io/gh/wowserhq/math)
 
 A 3D math library for Wowser.
 
