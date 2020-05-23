@@ -16,6 +16,7 @@
     "build": "npm run clean && npm run test && npm run build:cjs && npm run build:esm",
     "build:cjs": "BABEL_ENV=cjs babel src/lib/ --out-dir dist/",
     "build:esm": "BABEL_ENV=esm babel src/lib/ --out-dir dist/ --keep-file-extension",
+    "coverage": "jest --config .jestrc.json",
     "release": "standard-version",
     "test": "npm run lint && jest --config .jestrc.json",
     "prepublishOnly": "npm run build",
