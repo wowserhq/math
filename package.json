@@ -16,6 +16,7 @@
     "build": "npm run clean && npm run test && npm run build:cjs && npm run build:esm",
     "build:cjs": "BABEL_ENV=cjs babel src/lib/ --out-dir dist/",
     "build:esm": "BABEL_ENV=esm babel src/lib/ --out-dir dist/ --keep-file-extension",
+    "release": "standard-version",
     "test": "npm run lint && jest --config .jestrc.json",
     "prepublishOnly": "npm run build",
     "doc": "jsdoc -c .jsdocrc -d doc",
@@ -43,6 +44,7 @@
     "husky": "4.2.5",
     "jest": "26.0.1",
     "jsdoc": "3.6.4",
-    "rimraf": "2.6.2"
+    "rimraf": "2.6.2",
+    "standard-version": "8.0.0"
   }
 }
