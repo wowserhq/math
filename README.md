@@ -52,4 +52,4 @@ Wowser Math should work with any browser that has native support for:
 Currently, the browser support targets are the latest 2 major versions of Chrome, Firefox, Safari,
 and Edge.
 
-Additionally, Node 8.7+ is supported.
+Additionally, Node 10+ is supported.
