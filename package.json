@@ -17,7 +17,6 @@
     "build:cjs": "BABEL_ENV=cjs babel src/lib/ --out-dir dist/",
     "build:esm": "BABEL_ENV=esm babel src/lib/ --out-dir dist/ --keep-file-extension",
     "test": "npm run lint && jest --config .jestrc.json",
-    "precommit": "npm run lint",
     "prepublishOnly": "npm run build",
     "doc": "jsdoc -c .jsdocrc -d doc",
     "compat": "browserslist --coverage \"last 2 versions, not ie 1-11, not android > 0\""
@@ -39,7 +38,7 @@
     "eslint": "^4.13.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^21.15.0",
-    "husky": "^0.14.3",
+    "husky": "^4.2.5",
     "jest": "^23.5.0",
     "jsdoc": "^3.5.5",
     "marked": "^0.3.9",
