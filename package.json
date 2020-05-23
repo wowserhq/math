@@ -6,6 +6,10 @@
   "repository": "github:wowserhq/math",
   "license": "MIT",
   "main": "dist/index",
+  "exports": {
+    "import": "./dist/index.mjs",
+    "require": "./dist/index.js"
+  },
   "scripts": {
     "lint": "eslint --ignore-path .gitignore --ext=mjs,js .",
     "clean": "rimraf ./dist",
