@@ -39,7 +39,7 @@
     "eslint-plugin-import": "2.14.0",
     "eslint-plugin-jest": "21.22.0",
     "husky": "4.2.5",
-    "jest": "23.5.0",
+    "jest": "26.0.1",
     "jsdoc": "3.6.4",
     "marked": "0.3.19",
     "rimraf": "2.6.2"
