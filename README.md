@@ -1,13 +1,12 @@
 # Wowser Math
 
-[![Join Community](https://img.shields.io/badge/discord-join_community-blue.svg?style=flat)](https://discord.gg/DeVVKVg)
-[![Version](https://img.shields.io/npm/v/@wowserhq/math.svg?style=flat)](https://www.npmjs.org/package/@wowserhq/math)
+[![Join Community](https://badgen.net/badge/discord/join%20community/blue)](https://discord.gg/DeVVKVg)
+[![Version](https://badgen.net/npm/v/@wowserhq/math)](https://www.npmjs.org/package/@wowserhq/math)
+[![MIT License](https://badgen.net/github/license/wowserhq/math)](LICENSE.md)
 [![CI](https://github.com/wowserhq/math/workflows/CI/badge.svg)](https://github.com/wowserhq/math/actions?query=workflow%3ACI)
 [![Test Coverage](https://codecov.io/gh/wowserhq/math/branch/master/graph/badge.svg)](https://codecov.io/gh/wowserhq/math)
 
 A 3D math library for Wowser.
-
-Licensed under the **MIT** license, see LICENSE for more information.
 
 ## Usage
 
