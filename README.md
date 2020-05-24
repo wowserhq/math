@@ -2,7 +2,7 @@
 
 [![Join Community](https://badgen.net/badge/discord/join%20community/blue)](https://discord.gg/DeVVKVg)
 [![Version](https://badgen.net/npm/v/@wowserhq/math)](https://www.npmjs.org/package/@wowserhq/math)
-[![MIT License](https://badgen.net/github/license/wowserhq/math)](LICENSE.md)
+[![MIT License](https://badgen.net/github/license/wowserhq/math)](LICENSE)
 [![CI](https://github.com/wowserhq/math/workflows/CI/badge.svg)](https://github.com/wowserhq/math/actions?query=workflow%3ACI)
 [![Test Coverage](https://codecov.io/gh/wowserhq/math/branch/master/graph/badge.svg)](https://codecov.io/gh/wowserhq/math)
 
