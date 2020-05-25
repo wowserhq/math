@@ -17,9 +17,9 @@
     "build": "npm run clean && npm run test && npm run build:cjs && npm run build:esm",
     "build:cjs": "BABEL_ENV=cjs babel src/lib/ --out-dir dist/",
     "build:esm": "BABEL_ENV=esm babel src/lib/ --out-dir dist/ --keep-file-extension",
-    "coverage": "jest --config .jestrc.json",
+    "coverage": "jest",
     "release": "standard-version",
-    "test": "npm run lint && jest --config .jestrc.json",
+    "test": "npm run lint && jest",
     "prepublishOnly": "npm run build",
     "doc": "jsdoc -c .jsdocrc -d doc",
     "compat": "browserslist --coverage \"last 2 versions, not ie 1-11, not ie_mob > 0, not android > 0\""
