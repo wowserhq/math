@@ -16,6 +16,54 @@ describe('Vector3', () => {
     });
   });
 
+  describe('prototype.x', () => {
+    test('gets x component', () => {
+      const vector = Vector3.of(1.0, 2.0, 3.0);
+
+      expect(vector.x).toEqual(1.0);
+    });
+
+    test('sets x component', () => {
+      const vector = Vector3.of(1.0, 2.0, 3.0);
+
+      vector.x = 4.0;
+
+      expect(vector.x).toEqual(4.0);
+    });
+  });
+
+  describe('prototype.y', () => {
+    test('gets y component', () => {
+      const vector = Vector3.of(1.0, 2.0, 3.0);
+
+      expect(vector.y).toEqual(2.0);
+    });
+
+    test('sets y component', () => {
+      const vector = Vector3.of(1.0, 2.0, 3.0);
+
+      vector.y = 4.0;
+
+      expect(vector.y).toEqual(4.0);
+    });
+  });
+
+  describe('prototype.z', () => {
+    test('gets z component', () => {
+      const vector = Vector3.of(1.0, 2.0, 3.0);
+
+      expect(vector.z).toEqual(3.0);
+    });
+
+    test('sets z component', () => {
+      const vector = Vector3.of(1.0, 2.0, 3.0);
+
+      vector.z = 4.0;
+
+      expect(vector.z).toEqual(4.0);
+    });
+  });
+
   describe('prototype.add()', () => {
     test('returns expected result when adding positive vector', () => {
       const vector1 = Vector3.of(1.0, 2.0, 3.0);
