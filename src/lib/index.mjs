@@ -3,6 +3,7 @@ import Matrix3 from './Matrix3.mjs';
 import Matrix4 from './Matrix4.mjs';
 import Plane from './Plane.mjs';
 import Quaternion from './Quaternion.mjs';
+import Vector2 from './Vector2.mjs';
 import Vector3 from './Vector3.mjs';
 
 export {
@@ -12,5 +13,6 @@ export {
   Matrix4,
   Plane,
   Quaternion,
+  Vector2,
   Vector3,
 };
