@@ -6,6 +6,7 @@
   "repository": "github:wowserhq/math",
   "license": "MIT",
   "main": "dist/index",
+  "module": "dist/index.mjs",
   "exports": {
     "import": "./dist/index.mjs",
     "require": "./dist/index.js"
