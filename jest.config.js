@@ -3,6 +3,7 @@ module.exports = {
   coverageDirectory: './coverage/',
   collectCoverage: true,
   moduleFileExtensions: ['js', 'mjs'],
+  testMatch: ['**/?(*.)+(spec|test).mjs'],
   transform: {
     '^.+\\.m?js$': 'babel-jest',
   },
