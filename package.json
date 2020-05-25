@@ -39,6 +39,7 @@
     "@wowserhq/eslint-config": "0.3.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "26.0.1",
+    "babel-plugin-module-resolver": "4.0.0",
     "eslint": "4.19.1",
     "eslint-plugin-import": "2.14.0",
     "eslint-plugin-jest": "21.22.0",

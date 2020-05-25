@@ -1,6 +1,6 @@
 /* eslint-disable prefer-const */
 
-import { EPSILON } from './common';
+import { EPSILON } from './common.mjs';
 
 /**
  * Default values (identity)

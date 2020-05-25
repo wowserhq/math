@@ -1,9 +1,9 @@
-import { DEG2RAD, EPSILON } from './common';
-import Matrix3 from './Matrix3';
-import Matrix4 from './Matrix4';
-import Plane from './Plane';
-import Quaternion from './Quaternion';
-import Vector3 from './Vector3';
+import { DEG2RAD, EPSILON } from './common.mjs';
+import Matrix3 from './Matrix3.mjs';
+import Matrix4 from './Matrix4.mjs';
+import Plane from './Plane.mjs';
+import Quaternion from './Quaternion.mjs';
+import Vector3 from './Vector3.mjs';
 
 export {
   DEG2RAD,
